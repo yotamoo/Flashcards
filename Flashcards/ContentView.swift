@@ -40,7 +40,7 @@ struct Flashcard: View {
     
     func flipFlashcard() {
         withAnimation(Animation.linear(duration: 0.5)) {
-            rotation += 180
+            rotation -= 180
             flipped.toggle()
         }
     }
