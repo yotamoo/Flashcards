@@ -14,6 +14,7 @@
 		5532015C2705BF6200D3EDE7 /* FlashcardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532015B2705BF6200D3EDE7 /* FlashcardsTests.swift */; };
 		553201662705BF6200D3EDE7 /* FlashcardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */; };
 		553201682705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */; };
+		553201752706859500D3EDE7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201742706859500D3EDE7 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		553201612705BF6200D3EDE7 /* FlashcardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsUITests.swift; sourceTree = "<group>"; };
 		553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		553201742706859500D3EDE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				5532014C2705BF6000D3EDE7 /* ContentView.swift */,
 				5532014E2705BF6200D3EDE7 /* Assets.xcassets */,
 				553201502705BF6200D3EDE7 /* Preview Content */,
+				553201742706859500D3EDE7 /* CardView.swift */,
 			);
 			path = Flashcards;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */,
+				553201752706859500D3EDE7 /* CardView.swift in Sources */,
 				5532014B2705BF6000D3EDE7 /* FlashcardsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
