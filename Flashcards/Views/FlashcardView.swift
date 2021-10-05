@@ -32,15 +32,17 @@ struct FlashcardView: View {
             .animation(.interactiveSpring())
             .offset(x: self.translation.width, y: 0)
             .rotationEffect(.degrees(Double(self.translation.width / geometry.size.width) * 25), anchor: .bottom)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        self.translation = value.translation
-                    }.onEnded { value in
-                        self.translation = .zero
-                    }
-            )
         }
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    if flipped {
+                        self.translation = value.translation
+                    }
+                }.onEnded { value in
+                    self.translation = .zero
+                }
+        )
     }
 }
 
