@@ -11,6 +11,7 @@ struct FlashcardView: View {
     @State private var flipped = false
     @State private var animate3d = false
     @State private var translation: CGSize = .zero
+    @State private var swipeDirection: SwipeDirection = .none
     
     let front: String
     let back: String
@@ -38,12 +39,26 @@ struct FlashcardView: View {
                 .onChanged { value in
                     if flipped {
                         self.translation = value.translation
+                        
+                        if value.translation.width < 0 {
+                            swipeDirection = .left
+                        } else if value.translation.width > 0 {
+                            swipeDirection = .right
+                        }
+                    } else {
+                        swipeDirection = .none
                     }
                 }.onEnded { value in
                     self.translation = .zero
                 }
         )
     }
+}
+
+enum SwipeDirection: String {
+    case right
+    case left
+    case none
 }
 
 struct FlipEffect: GeometryEffect {
