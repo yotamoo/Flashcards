@@ -13,7 +13,7 @@ class DeckViewViewModel: ObservableObject {
     var flashcardModels: [FlashcardModel] = []
     
     init(flashcardService: FlashcardServiceType) {
-        cancellable = flashcardService.flashcards.sink { _ in
+        cancellable = flashcardService.flashcards.prefix(1).sink { _ in
             
         } receiveValue: { [weak self] in
             self?.flashcardModels = $0
@@ -47,6 +47,7 @@ struct DeckView: View {
     
     var body: some View {
         /*
+         This does not work
          FlashcardView(model: viewModel.flashcardModels[index]) {
              viewModel.cardViewed($0)
          }
