@@ -28,8 +28,8 @@ class DeckViewViewModelTests: QuickSpec {
             sut = DeckViewViewModel(flashcardRepository: mockFlashcardRepository)
         }
         
-        describe("the 'Documentation' directory") {
-            it("has everything you need to get started") {
+        describe("flashcardModel") {
+            it("passes the values as is from the repository") {
                 let flashcardModel = FlashcardModel(id: .init(), front: "front", back: "back")
                 mockFlashcardRepository.flashcardsSubject.send([flashcardModel])
                 expect(sut.flashcardModels) == [flashcardModel]
