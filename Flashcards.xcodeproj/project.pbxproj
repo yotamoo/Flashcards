@@ -15,6 +15,10 @@
 		553201662705BF6200D3EDE7 /* FlashcardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */; };
 		553201682705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */; };
 		553201752706859500D3EDE7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201742706859500D3EDE7 /* CardView.swift */; };
+		55C789DC270DF28100056583 /* FlashcardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789DB270DF28100056583 /* FlashcardModel.swift */; };
+		55C789DF270DF2A100056583 /* FlashcardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789DE270DF2A100056583 /* FlashcardService.swift */; };
+		55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E1270DF2F700056583 /* FlashcardRepository.swift */; };
+		55C789E4270DF3A600056583 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E3270DF3A600056583 /* DeckView.swift */; };
 		55F7036F2707068F00F4BE51 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7036E2707068F00F4BE51 /* FlashcardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +51,10 @@
 		553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsUITests.swift; sourceTree = "<group>"; };
 		553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		553201742706859500D3EDE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		55C789DB270DF28100056583 /* FlashcardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
+		55C789DE270DF2A100056583 /* FlashcardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardService.swift; sourceTree = "<group>"; };
+		55C789E1270DF2F700056583 /* FlashcardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardRepository.swift; sourceTree = "<group>"; };
+		55C789E3270DF3A600056583 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		55F7036E2707068F00F4BE51 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +106,9 @@
 		553201492705BF6000D3EDE7 /* Flashcards */ = {
 			isa = PBXGroup;
 			children = (
+				55C789E0270DF2D100056583 /* Repositories */,
+				55C789DD270DF29300056583 /* Services */,
+				55C789DA270DF26500056583 /* Models */,
 				55F703702708844700F4BE51 /* Views */,
 				5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */,
 				5532014E2705BF6200D3EDE7 /* Assets.xcassets */,
@@ -131,12 +142,37 @@
 			path = FlashcardsUITests;
 			sourceTree = "<group>";
 		};
+		55C789DA270DF26500056583 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				55C789DB270DF28100056583 /* FlashcardModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		55C789DD270DF29300056583 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				55C789DE270DF2A100056583 /* FlashcardService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		55C789E0270DF2D100056583 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				55C789E1270DF2F700056583 /* FlashcardRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		55F703702708844700F4BE51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5532014C2705BF6000D3EDE7 /* ContentView.swift */,
 				553201742706859500D3EDE7 /* CardView.swift */,
 				55F7036E2707068F00F4BE51 /* FlashcardView.swift */,
+				55C789E3270DF3A600056583 /* DeckView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,9 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C789DC270DF28100056583 /* FlashcardModel.swift in Sources */,
+				55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */,
 				5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */,
+				55C789E4270DF3A600056583 /* DeckView.swift in Sources */,
 				553201752706859500D3EDE7 /* CardView.swift in Sources */,
 				5532014B2705BF6000D3EDE7 /* FlashcardsApp.swift in Sources */,
+				55C789DF270DF2A100056583 /* FlashcardService.swift in Sources */,
 				55F7036F2707068F00F4BE51 /* FlashcardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
