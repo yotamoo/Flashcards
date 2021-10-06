@@ -7,17 +7,24 @@
 
 import SwiftUI
 
+class DeckViewViewModel: ObservableObject {
+    @Published var flashcardModels: [FlashcardModel] = [
+        .init(id: .init(), front: "front 1", back: "back 1"),
+        .init(id: .init(), front: "front 2", back: "back 2"),
+        .init(id: .init(), front: "front 3", back: "back 3"),
+    ]
+}
+
 struct DeckView: View {
-    let flashcardModels: [FlashcardModel]
-    
+    @ObservedObject var viewModel = DeckViewViewModel()
     @State var index = 0
     
     var body: some View {
         ZStack {
-            ForEach(flashcardModels) { model in
+            ForEach(viewModel.flashcardModels) { model in
                 FlashcardView(model: model) {
                     print($0 ? "well done" : "next time")
-                    if index + 1 < flashcardModels.count {
+                    if index + 1 < viewModel.flashcardModels.count {
                         index += 1
                     }
                     else {
@@ -31,6 +38,6 @@ struct DeckView: View {
 
 struct DeckView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckView(flashcardModels: [])
+        DeckView()
     }
 }
