@@ -6,13 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 class DeckViewViewModel: ObservableObject {
-    let flashcardModels: [FlashcardModel] = [
-        .init(id: .init(), front: "front 1", back: "back 1"),
-        .init(id: .init(), front: "front 2", back: "back 2"),
-        .init(id: .init(), front: "front 3", back: "back 3"),
-    ].reversed()
+    var cancellable: AnyCancellable?
+    var flashcardModels: [FlashcardModel] = []
+    
+    init(flashcardService: FlashcardServiceType) {
+        cancellable = flashcardService.flashcards.sink { _ in
+            
+        } receiveValue: { [weak self] in
+            self?.flashcardModels = $0
+        }
+
+    }
     
     func cardViewed(_ success: Bool, model: FlashcardModel) {
         print(success ? "well done" : "next time")
@@ -23,8 +30,20 @@ class DeckViewViewModel: ObservableObject {
     }
 }
 
+class TempFlashCardService: FlashcardServiceType {
+    var flashcards: AnyPublisher<[FlashcardModel], Error> {
+        Just([
+            FlashcardModel(id: .init(), front: "front 1", back: "back 1"),
+            FlashcardModel(id: .init(), front: "front 2", back: "back 2"),
+            FlashcardModel(id: .init(), front: "front 3", back: "back 3"),
+        ])
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+    }
+}
+
 struct DeckView: View {
-    let viewModel = DeckViewViewModel()
+    let viewModel = DeckViewViewModel(flashcardService: TempFlashCardService())
     
     var body: some View {
         /*
