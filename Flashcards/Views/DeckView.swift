@@ -8,28 +8,34 @@
 import SwiftUI
 
 class DeckViewViewModel: ObservableObject {
-    @Published var flashcardModels: [FlashcardModel] = [
+    let flashcardModels: [FlashcardModel] = [
         .init(id: .init(), front: "front 1", back: "back 1"),
         .init(id: .init(), front: "front 2", back: "back 2"),
         .init(id: .init(), front: "front 3", back: "back 3"),
-    ]
+    ].reversed()
+    
+    func cardViewed(_ success: Bool, model: FlashcardModel) {
+        print(success ? "well done" : "next time")
+        
+        if model == flashcardModels.first {
+            print("finished")
+        }
+    }
 }
 
 struct DeckView: View {
-    @ObservedObject var viewModel = DeckViewViewModel()
-    @State var index = 0
+    let viewModel = DeckViewViewModel()
     
     var body: some View {
+        /*
+         FlashcardView(model: viewModel.flashcardModels[index]) {
+             viewModel.cardViewed($0)
+         }
+         */
         ZStack {
             ForEach(viewModel.flashcardModels) { model in
                 FlashcardView(model: model) {
-                    print($0 ? "well done" : "next time")
-                    if index + 1 < viewModel.flashcardModels.count {
-                        index += 1
-                    }
-                    else {
-                        print("finished!")
-                    }
+                    viewModel.cardViewed($0, model: model)
                 }
             }
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FlashcardModel: Identifiable {
+struct FlashcardModel: Equatable, Identifiable {
     let id: UUID
     let front: String
     let back: String

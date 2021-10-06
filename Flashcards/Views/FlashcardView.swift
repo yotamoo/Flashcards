@@ -34,7 +34,6 @@ struct FlashcardView: View {
                 DragGesture()
                     .onChanged { value in
                         guard flipped else { return }
-                        print(value.translation.width)
                         self.translation = value.translation
                     }.onEnded { value in
                         guard flipped else { return }
