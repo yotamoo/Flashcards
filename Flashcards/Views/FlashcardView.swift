@@ -39,11 +39,15 @@ struct FlashcardView: View {
                         guard flipped else { return }
                         let limit = geometry.size.width * 0.3
                         if value.translation.width > limit  {
-                            self.translation.width = geometry.size.width
+                            withAnimation(.linear(duration: 0.5)) {
+                                self.translation.width = geometry.size.width
+                            }
                             completion(true)
                         }
                         else if value.translation.width < -limit {
-                            self.translation.width = -geometry.size.width
+                            withAnimation(.linear(duration: 0.5)) {
+                                self.translation.width = -geometry.size.width
+                            }
                             completion(false)
                         }
                         else {

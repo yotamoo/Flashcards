@@ -15,7 +15,9 @@ protocol FlashcardRepositoryType {
 class FlashcardRepository: FlashcardRepositoryType {
     var flashcards: AnyPublisher<[FlashcardModel], Error> {
         Just([
-            FlashcardModel(id: .init(), front: "asdf", back: "asdf")
+            FlashcardModel(id: .init(), front: "der Hund", back: "dog"),
+            FlashcardModel(id: .init(), front: "die Katze", back: "cat"),
+            FlashcardModel(id: .init(), front: "die Maus", back: "mouse"),
         ])
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
