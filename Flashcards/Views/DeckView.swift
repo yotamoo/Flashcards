@@ -12,8 +12,8 @@ class DeckViewViewModel: ObservableObject {
     var cancellable: AnyCancellable?
     var flashcardModels: [FlashcardModel] = []
     
-    init(flashcardService: FlashcardServiceType) {
-        cancellable = flashcardService.flashcards.prefix(1).sink { _ in
+    init(flashcardRepository: FlashcardRepositoryType) {
+        cancellable = flashcardRepository.flashcards.prefix(1).sink { _ in
             print("done")
         } receiveValue: { [weak self] in
             self?.flashcardModels = $0
@@ -30,20 +30,8 @@ class DeckViewViewModel: ObservableObject {
     }
 }
 
-class TempFlashCardService: FlashcardServiceType {
-    var flashcards: AnyPublisher<[FlashcardModel], Error> {
-        Just([
-            FlashcardModel(id: .init(), front: "front 1", back: "back 1"),
-            FlashcardModel(id: .init(), front: "front 2", back: "back 2"),
-            FlashcardModel(id: .init(), front: "front 3", back: "back 3"),
-        ])
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-    }
-}
-
 struct DeckView: View {
-    let viewModel = DeckViewViewModel(flashcardService: TempFlashCardService())
+    let viewModel = DeckViewViewModel(flashcardRepository: FlashcardRepository())
     
     var body: some View {
         /*

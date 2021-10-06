@@ -8,19 +8,32 @@
 import Foundation
 import Quick
 import Nimble
+import Combine
+@testable import Flashcards
+
+struct FlashcardRepositoryMock: FlashcardRepositoryType {
+    let flashcardsSubject = PassthroughSubject<[FlashcardModel], Error>()
+    var flashcards: AnyPublisher<[FlashcardModel], Error> {
+        flashcardsSubject.eraseToAnyPublisher()
+    }
+}
 
 class DeckViewViewModelTests: QuickSpec {
-  override func spec() {
-    describe("the 'Documentation' directory") {
-      it("has everything you need to get started") {
-          expect(true).to(beTrue())
-      }
-
-      context("if it doesn't have what you're looking for") {
-        it("needs to be updated") {
-            expect(true).to(beTrue())
+    override func spec() {
+        var mockFlashcardRepository: FlashcardRepositoryMock!
+        var sut: DeckViewViewModel!
+        
+        beforeEach {
+            mockFlashcardRepository = FlashcardRepositoryMock()
+            sut = DeckViewViewModel(flashcardRepository: mockFlashcardRepository)
         }
-      }
+        
+        describe("the 'Documentation' directory") {
+            it("has everything you need to get started") {
+                let flashcardModel = FlashcardModel(id: .init(), front: "front", back: "back")
+                mockFlashcardRepository.flashcardsSubject.send([flashcardModel])
+                expect(sut.flashcardModels) == [flashcardModel]
+            }
+        }
     }
-  }
 }
