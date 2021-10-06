@@ -10,22 +10,55 @@ import SwiftUI
 struct FlashcardView: View {
     @State private var flipped = false
     @State private var animate3d = false
+    @State private var translation: CGSize = .zero
+    @State private var swipeDirection: SwipeDirection = .none
     
     let front: String
     let back: String
     
     var body: some View {
-        ZStack() {
-            CardView(text: front).opacity(flipped ? 0.0 : 1.0)
-            CardView(text: back).opacity(flipped ? 1.0 : 0.0)
-        }
-        .modifier(FlipEffect(flipped: $flipped, angle: animate3d ? 180 : 0, axis: (x: 0, y: 1)))
-        .onTapGesture {
-            withAnimation(Animation.linear(duration: 0.5)) {
-                self.animate3d.toggle()
+        
+        GeometryReader { geometry in
+            ZStack {
+                CardView(text: front).opacity(flipped ? 0.0 : 1.0)
+                CardView(text: back).opacity(flipped ? 1.0 : 0.0)
             }
+            .frame(width: geometry.size.width, height: geometry.size.height)
+            .modifier(FlipEffect(flipped: $flipped, angle: animate3d ? 180 : 0, axis: (x: 0, y: 1)))
+            .onTapGesture {
+                withAnimation(Animation.linear(duration: 0.5)) {
+                    self.animate3d.toggle()
+                }
+            }
+            .animation(.interactiveSpring())
+            .offset(x: self.translation.width, y: 0)
+            .rotationEffect(.degrees(Double(self.translation.width / geometry.size.width) * 25), anchor: .bottom)
         }
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    if flipped {
+                        self.translation = value.translation
+                        
+                        if value.translation.width < 0 {
+                            swipeDirection = .left
+                        } else if value.translation.width > 0 {
+                            swipeDirection = .right
+                        }
+                    } else {
+                        swipeDirection = .none
+                    }
+                }.onEnded { value in
+                    self.translation = .zero
+                }
+        )
     }
+}
+
+enum SwipeDirection: String {
+    case right
+    case left
+    case none
 }
 
 struct FlipEffect: GeometryEffect {
