@@ -8,10 +8,24 @@
 import SwiftUI
 
 struct DeckView: View {
-    @State var flashcardModels: [FlashcardModel]
+    let flashcardModels: [FlashcardModel]
+    
+    @State var index = 0
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            ForEach(flashcardModels) { model in
+                FlashcardView(model: model) {
+                    print($0 ? "well done" : "next time")
+                    if index + 1 < flashcardModels.count {
+                        index += 1
+                    }
+                    else {
+                        print("finished!")
+                    }
+                }
+            }
+        }
     }
 }
 

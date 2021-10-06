@@ -10,9 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         DeckView(flashcardModels: [
-            .init(front: "front 1", back: "back 1"),
-            .init(front: "front 2", back: "back 2"),
-            .init(front: "front 3", back: "back 3"),
+            .init(id: .init(), front: "front 1", back: "back 1"),
+            .init(id: .init(), front: "front 2", back: "back 2"),
+            .init(id: .init(), front: "front 3", back: "back 3"),
         ])
     }
 }
