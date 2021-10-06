@@ -14,7 +14,7 @@ class DeckViewViewModel: ObservableObject {
     
     init(flashcardService: FlashcardServiceType) {
         cancellable = flashcardService.flashcards.prefix(1).sink { _ in
-            
+            print("done")
         } receiveValue: { [weak self] in
             self?.flashcardModels = $0
         }

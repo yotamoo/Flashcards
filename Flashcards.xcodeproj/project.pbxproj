@@ -11,10 +11,12 @@
 		5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532014C2705BF6000D3EDE7 /* ContentView.swift */; };
 		5532014F2705BF6200D3EDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5532014E2705BF6200D3EDE7 /* Assets.xcassets */; };
 		553201522705BF6200D3EDE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553201512705BF6200D3EDE7 /* Preview Assets.xcassets */; };
-		5532015C2705BF6200D3EDE7 /* FlashcardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532015B2705BF6200D3EDE7 /* FlashcardsTests.swift */; };
 		553201662705BF6200D3EDE7 /* FlashcardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */; };
 		553201682705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */; };
 		553201752706859500D3EDE7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201742706859500D3EDE7 /* CardView.swift */; };
+		5580C85D270E2E130002E67C /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 5580C85C270E2E130002E67C /* Nimble */; };
+		5580C85F270E2E160002E67C /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 5580C85E270E2E160002E67C /* Quick */; };
+		5580C861270E2EB20002E67C /* DeckViewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5580C860270E2EB20002E67C /* DeckViewViewModelTests.swift */; };
 		55C789DC270DF28100056583 /* FlashcardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789DB270DF28100056583 /* FlashcardModel.swift */; };
 		55C789DF270DF2A100056583 /* FlashcardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789DE270DF2A100056583 /* FlashcardService.swift */; };
 		55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E1270DF2F700056583 /* FlashcardRepository.swift */; };
@@ -46,11 +48,11 @@
 		5532014E2705BF6200D3EDE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		553201512705BF6200D3EDE7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		553201572705BF6200D3EDE7 /* FlashcardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5532015B2705BF6200D3EDE7 /* FlashcardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsTests.swift; sourceTree = "<group>"; };
 		553201612705BF6200D3EDE7 /* FlashcardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsUITests.swift; sourceTree = "<group>"; };
 		553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		553201742706859500D3EDE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5580C860270E2EB20002E67C /* DeckViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewViewModelTests.swift; sourceTree = "<group>"; };
 		55C789DB270DF28100056583 /* FlashcardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
 		55C789DE270DF2A100056583 /* FlashcardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardService.swift; sourceTree = "<group>"; };
 		55C789E1270DF2F700056583 /* FlashcardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardRepository.swift; sourceTree = "<group>"; };
@@ -70,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5580C85F270E2E160002E67C /* Quick in Frameworks */,
+				5580C85D270E2E130002E67C /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +94,7 @@
 				5532015A2705BF6200D3EDE7 /* FlashcardsTests */,
 				553201642705BF6200D3EDE7 /* FlashcardsUITests */,
 				553201482705BF6000D3EDE7 /* Products */,
+				5580C85B270E2E130002E67C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,7 +133,7 @@
 		5532015A2705BF6200D3EDE7 /* FlashcardsTests */ = {
 			isa = PBXGroup;
 			children = (
-				5532015B2705BF6200D3EDE7 /* FlashcardsTests.swift */,
+				5580C860270E2EB20002E67C /* DeckViewViewModelTests.swift */,
 			);
 			path = FlashcardsTests;
 			sourceTree = "<group>";
@@ -140,6 +145,13 @@
 				553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */,
 			);
 			path = FlashcardsUITests;
+			sourceTree = "<group>";
+		};
+		5580C85B270E2E130002E67C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		55C789DA270DF26500056583 /* Models */ = {
@@ -193,6 +205,8 @@
 			dependencies = (
 			);
 			name = Flashcards;
+			packageProductDependencies = (
+			);
 			productName = Flashcards;
 			productReference = 553201472705BF6000D3EDE7 /* Flashcards.app */;
 			productType = "com.apple.product-type.application";
@@ -211,6 +225,10 @@
 				553201592705BF6200D3EDE7 /* PBXTargetDependency */,
 			);
 			name = FlashcardsTests;
+			packageProductDependencies = (
+				5580C85C270E2E130002E67C /* Nimble */,
+				5580C85E270E2E160002E67C /* Quick */,
+			);
 			productName = FlashcardsTests;
 			productReference = 553201572705BF6200D3EDE7 /* FlashcardsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -265,6 +283,10 @@
 				Base,
 			);
 			mainGroup = 5532013E2705BF6000D3EDE7;
+			packageReferences = (
+				5580C855270E2DF00002E67C /* XCRemoteSwiftPackageReference "Quick" */,
+				5580C858270E2E030002E67C /* XCRemoteSwiftPackageReference "Nimble" */,
+			);
 			productRefGroup = 553201482705BF6000D3EDE7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -322,7 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5532015C2705BF6200D3EDE7 /* FlashcardsTests.swift in Sources */,
+				5580C861270E2EB20002E67C /* DeckViewViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +685,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5580C855270E2DF00002E67C /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		5580C858270E2E030002E67C /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5580C85C270E2E130002E67C /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5580C858270E2E030002E67C /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+		5580C85E270E2E160002E67C /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5580C855270E2DF00002E67C /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5532013F2705BF6000D3EDE7 /* Project object */;
 }
