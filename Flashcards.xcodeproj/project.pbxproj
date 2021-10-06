@@ -11,7 +11,6 @@
 		5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532014C2705BF6000D3EDE7 /* ContentView.swift */; };
 		5532014F2705BF6200D3EDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5532014E2705BF6200D3EDE7 /* Assets.xcassets */; };
 		553201522705BF6200D3EDE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553201512705BF6200D3EDE7 /* Preview Assets.xcassets */; };
-		553201662705BF6200D3EDE7 /* FlashcardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */; };
 		553201682705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */; };
 		553201752706859500D3EDE7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553201742706859500D3EDE7 /* CardView.swift */; };
 		5580C85D270E2E130002E67C /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 5580C85C270E2E130002E67C /* Nimble */; };
@@ -49,7 +48,6 @@
 		553201512705BF6200D3EDE7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		553201572705BF6200D3EDE7 /* FlashcardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		553201612705BF6200D3EDE7 /* FlashcardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsUITests.swift; sourceTree = "<group>"; };
 		553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		553201742706859500D3EDE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5580C860270E2EB20002E67C /* DeckViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewViewModelTests.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 		553201642705BF6200D3EDE7 /* FlashcardsUITests */ = {
 			isa = PBXGroup;
 			children = (
-				553201652705BF6200D3EDE7 /* FlashcardsUITests.swift */,
 				553201672705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift */,
 			);
 			path = FlashcardsUITests;
@@ -352,7 +349,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553201662705BF6200D3EDE7 /* FlashcardsUITests.swift in Sources */,
 				553201682705BF6200D3EDE7 /* FlashcardsUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

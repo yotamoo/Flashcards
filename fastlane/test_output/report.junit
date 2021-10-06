@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='FlashcardsTests.xctest' tests='5' failures='0'>
+  <testsuite name='FlashcardsUITests.FlashcardsUITestsLaunchTests' tests='4' failures='0'>
+    <testcase classname='FlashcardsUITests.FlashcardsUITestsLaunchTests' name='testLaunch' time='3.241'/>
+    <testcase classname='FlashcardsUITests.FlashcardsUITestsLaunchTests' name='testLaunch' time='7.348'/>
+    <testcase classname='FlashcardsUITests.FlashcardsUITestsLaunchTests' name='testLaunch' time='5.222'/>
+    <testcase classname='FlashcardsUITests.FlashcardsUITestsLaunchTests' name='testLaunch' time='5.261'/>
+  </testsuite>
+  <testsuite name='FlashcardsTests.DeckViewViewModelTests' tests='1' failures='0'>
+    <testcase classname='FlashcardsTests.DeckViewViewModelTests' name='flashcardModel__passes_the_values_as_is_from_the_repository' time='0.002'/>
+  </testsuite>
+</testsuites>
