@@ -47,8 +47,6 @@ struct FlashcardRepository: FlashcardRepositoryType {
         
         service.getFlashcards().handleEvents(receiveOutput: { flashcards in
             saveToUserDefaults(flashcards)
-        }, receiveCompletion: { serviceError in
-            // how can I return here fetchFromUserDefaults()?
         }).eraseToAnyPublisher()
     }
 }
