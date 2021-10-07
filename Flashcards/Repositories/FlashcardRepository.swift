@@ -44,18 +44,11 @@ struct FlashcardRepository: FlashcardRepositoryType {
     }
     
     func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
-        service.getFlashcards { [weak self] result in
-            switch result {
-            case .success(let flashcards):
-                return Just(flashcards)
-                    .setFailureType(to: Error.self)
-                    .eraseToAnyPublisher()
-            case .failure:
-                let flashcardModels = fetchFromUserDefaults()
-                return Just(flashcards)
-                    .setFailureType(to: Error.self)
-                    .eraseToAnyPublisher()
-            }
-        }
+        
+        service.getFlashcards().handleEvents(receiveOutput: { flashcards in
+            saveToUserDefaults(flashcards)
+        }, receiveCompletion: { serviceError in
+            // how can I return here fetchFromUserDefaults()?
+        }).eraseToAnyPublisher()
     }
 }
