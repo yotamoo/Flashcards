@@ -34,12 +34,6 @@ struct DeckView: View {
     let viewModel = DeckViewViewModel(flashcardRepository: FlashcardRepository())
     
     var body: some View {
-        /*
-         This does not work
-         FlashcardView(model: viewModel.flashcardModels[index]) {
-             viewModel.cardViewed($0)
-         }
-         */
         ZStack {
             ForEach(viewModel.flashcardModels) { model in
                 FlashcardView(model: model) {
