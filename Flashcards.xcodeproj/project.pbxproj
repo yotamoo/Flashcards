@@ -21,6 +21,10 @@
 		55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E1270DF2F700056583 /* FlashcardRepository.swift */; };
 		55C789E4270DF3A600056583 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E3270DF3A600056583 /* DeckView.swift */; };
 		55F7036F2707068F00F4BE51 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7036E2707068F00F4BE51 /* FlashcardView.swift */; };
+		D10BFFB627109C9800E8957E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D10BFFB527109C9800E8957E /* GoogleService-Info.plist */; };
+		D10BFFB927109DCF00E8957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D10BFFB827109DCF00E8957E /* FirebaseFirestore */; };
+		D10BFFBB27109DCF00E8957E /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D10BFFBA27109DCF00E8957E /* FirebaseFirestoreSwift-Beta */; };
+		D10BFFBD27109EED00E8957E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10BFFBC27109EED00E8957E /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,8 @@
 		55C789E1270DF2F700056583 /* FlashcardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardRepository.swift; sourceTree = "<group>"; };
 		55C789E3270DF3A600056583 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		55F7036E2707068F00F4BE51 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
+		D10BFFB527109C9800E8957E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D10BFFBC27109EED00E8957E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D10BFFB927109DCF00E8957E /* FirebaseFirestore in Frameworks */,
+				D10BFFBB27109DCF00E8957E /* FirebaseFirestoreSwift-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +117,7 @@
 		553201492705BF6000D3EDE7 /* Flashcards */ = {
 			isa = PBXGroup;
 			children = (
+				D10BFFBC27109EED00E8957E /* AppDelegate.swift */,
 				55C789E0270DF2D100056583 /* Repositories */,
 				55C789DD270DF29300056583 /* Services */,
 				55C789DA270DF26500056583 /* Models */,
@@ -116,6 +125,7 @@
 				5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */,
 				5532014E2705BF6200D3EDE7 /* Assets.xcassets */,
 				553201502705BF6200D3EDE7 /* Preview Content */,
+				D10BFFB527109C9800E8957E /* GoogleService-Info.plist */,
 			);
 			path = Flashcards;
 			sourceTree = "<group>";
@@ -203,6 +213,8 @@
 			);
 			name = Flashcards;
 			packageProductDependencies = (
+				D10BFFB827109DCF00E8957E /* FirebaseFirestore */,
+				D10BFFBA27109DCF00E8957E /* FirebaseFirestoreSwift-Beta */,
 			);
 			productName = Flashcards;
 			productReference = 553201472705BF6000D3EDE7 /* Flashcards.app */;
@@ -283,6 +295,7 @@
 			packageReferences = (
 				5580C855270E2DF00002E67C /* XCRemoteSwiftPackageReference "Quick" */,
 				5580C858270E2E030002E67C /* XCRemoteSwiftPackageReference "Nimble" */,
+				D10BFFB727109DCF00E8957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 553201482705BF6000D3EDE7 /* Products */;
 			projectDirPath = "";
@@ -302,6 +315,7 @@
 			files = (
 				553201522705BF6200D3EDE7 /* Preview Assets.xcassets in Resources */,
 				5532014F2705BF6200D3EDE7 /* Assets.xcassets in Resources */,
+				D10BFFB627109C9800E8957E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +343,7 @@
 				55C789DC270DF28100056583 /* FlashcardModel.swift in Sources */,
 				55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */,
 				5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */,
+				D10BFFBD27109EED00E8957E /* AppDelegate.swift in Sources */,
 				55C789E4270DF3A600056583 /* DeckView.swift in Sources */,
 				553201752706859500D3EDE7 /* CardView.swift in Sources */,
 				5532014B2705BF6000D3EDE7 /* FlashcardsApp.swift in Sources */,
@@ -699,6 +714,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		D10BFFB727109DCF00E8957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -711,6 +734,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5580C855270E2DF00002E67C /* XCRemoteSwiftPackageReference "Quick" */;
 			productName = Quick;
+		};
+		D10BFFB827109DCF00E8957E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D10BFFB727109DCF00E8957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D10BFFBA27109DCF00E8957E /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D10BFFB727109DCF00E8957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
