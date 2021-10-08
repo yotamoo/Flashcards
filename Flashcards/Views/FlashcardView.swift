@@ -11,54 +11,52 @@ struct FlashcardView: View {
     @State private var flipped = false
     @State private var animate3d = false
     @State private var translation: CGSize = .zero
-    @State private var swipeDirection: SwipeDirection = .none
     
-    let front: String
-    let back: String
+    let model: FlashcardModel
+    let completion: (Bool) -> Void
     
     var body: some View {
-        
         GeometryReader { geometry in
             ZStack {
-                CardView(text: front).opacity(flipped ? 0.0 : 1.0)
-                CardView(text: back).opacity(flipped ? 1.0 : 0.0)
+                CardView(text: model.front).opacity(flipped ? 0.0 : 1.0)
+                CardView(text: model.back).opacity(flipped ? 1.0 : 0.0)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .modifier(FlipEffect(flipped: $flipped, angle: animate3d ? 180 : 0, axis: (x: 0, y: 1)))
             .onTapGesture {
-                withAnimation(Animation.linear(duration: 0.5)) {
+                withAnimation(.linear(duration: 0.5)) {
                     self.animate3d.toggle()
                 }
             }
-            .animation(.interactiveSpring())
             .offset(x: self.translation.width, y: 0)
             .rotationEffect(.degrees(Double(self.translation.width / geometry.size.width) * 25), anchor: .bottom)
-        }
-        .gesture(
-            DragGesture()
-                .onChanged { value in
-                    if flipped {
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        guard flipped else { return }
                         self.translation = value.translation
-                        
-                        if value.translation.width < 0 {
-                            swipeDirection = .left
-                        } else if value.translation.width > 0 {
-                            swipeDirection = .right
+                    }.onEnded { value in
+                        guard flipped else { return }
+                        let limit = geometry.size.width * 0.3
+                        if value.translation.width > limit  {
+                            withAnimation(.linear(duration: 0.5)) {
+                                self.translation.width = geometry.size.width
+                            }
+                            completion(true)
                         }
-                    } else {
-                        swipeDirection = .none
+                        else if value.translation.width < -limit {
+                            withAnimation(.linear(duration: 0.5)) {
+                                self.translation.width = -geometry.size.width
+                            }
+                            completion(false)
+                        }
+                        else {
+                            self.translation = .zero
+                        }
                     }
-                }.onEnded { value in
-                    self.translation = .zero
-                }
-        )
+            )
+        }
     }
-}
-
-enum SwipeDirection: String {
-    case right
-    case left
-    case none
 }
 
 struct FlipEffect: GeometryEffect {
@@ -81,11 +79,21 @@ struct FlipEffect: GeometryEffect {
         let tweakedAngle = flipped ? -180 + angle : angle
         let a = CGFloat(Angle(degrees: tweakedAngle).radians)
         
-        var transform3d = CATransform3DIdentity;
-        transform3d.m34 = -1/max(size.width, size.height)
+        var transform3d = CATransform3DIdentity
+        transform3d.m34 = -1 / max(size.width, size.height)
         
-        transform3d = CATransform3DRotate(transform3d, a, axis.x, axis.y, 0)
-        transform3d = CATransform3DTranslate(transform3d, -size.width/2.0, -size.height/2.0, 0)
+        transform3d = CATransform3DRotate(
+            transform3d,
+            a,
+            axis.x,
+            axis.y, 0
+        )
+        
+        transform3d = CATransform3DTranslate(
+            transform3d,
+            -size.width / 2.0,
+            -size.height / 2.0, 0
+        )
         
         let affineTransform = ProjectionTransform(CGAffineTransform(translationX: size.width/2.0, y: size.height / 2.0))
         
@@ -95,6 +103,8 @@ struct FlipEffect: GeometryEffect {
 
 struct FlashcardView_Previews: PreviewProvider {
     static var previews: some View {
-        FlashcardView(front: "der Hund", back: "dog")
+        FlashcardView(
+            model: .init(id: .init(), front: "der Hund", back: "dog")
+        ) { _ in }
     }
 }

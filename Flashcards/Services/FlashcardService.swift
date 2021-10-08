@@ -17,12 +17,13 @@ class FlashcardService: FlashcardServiceProtocol {
     
     func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
         var flashcards: AnyPublisher<[FlashcardModel], Error> {
-            Just([FlashcardModel(front: "der Hund", back: "dog"),
-                  FlashcardModel(front: "die Katze", back: "cat"),
-                  FlashcardModel(front: "die Maus", back: "mouse")
-            ])
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
+            Just<[FlashcardModel]>(
+                [FlashcardModel(id: .init(), front: "der Hund", back: "dog"),
+                 FlashcardModel(id: .init(), front: "die Katze", back: "cat"),
+                 FlashcardModel(id: .init(), front: "die Maus", back: "mouse")]
+            )
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
         }
         
         return flashcards

@@ -19,28 +19,28 @@ struct FlashcardRepository: FlashcardRepositoryType {
     
     private var userDefaults: UserDefaults
     
+    private let key = "flashcards"
+    
     init() {
         self.service = FlashcardService()
         self.userDefaults = UserDefaults.standard
     }
     
     private func saveToUserDefaults(_ flashcards: [FlashcardModel]) {
-        for flashcard in flashcards {
-            userDefaults.set(flashcard.back, forKey: flashcard.front)
+        guard let data = try? JSONEncoder().encode(flashcards) else {
+            fatalError("could not encode flashcards array")
         }
+        
+        userDefaults.set(data, forKey: key)
     }
     
     private func fetchFromUserDefaults() -> [FlashcardModel] {
-        
-        var results: [FlashcardModel] = []
-        let allValues = userDefaults.dictionaryRepresentation()
-        
-        for flashcard in allValues {
-            guard let back = flashcard.value as? String else { return [] }
-            results.append(FlashcardModel(front: flashcard.key, back: back))
+        guard let data = userDefaults.data(forKey: key),
+              let parsed = try? JSONDecoder().decode([FlashcardModel].self, from: data) else {
+                  return []
         }
-            
-        return results
+        
+        return parsed
     }
     
     func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
