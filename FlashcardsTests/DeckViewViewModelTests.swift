@@ -13,7 +13,7 @@ import Combine
 
 struct FlashcardRepositoryMock: FlashcardRepositoryType {
     let flashcardsSubject = PassthroughSubject<[FlashcardModel], Error>()
-    var flashcards: AnyPublisher<[FlashcardModel], Error> {
+    func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
         flashcardsSubject.eraseToAnyPublisher()
     }
 }
