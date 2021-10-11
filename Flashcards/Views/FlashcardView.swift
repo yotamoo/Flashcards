@@ -13,7 +13,7 @@ struct FlashcardView: View {
     @State private var translation: CGSize = .zero
     
     let model: FlashcardModel
-    let completion: (Bool) -> Void
+    let completion: (Bool, FlashcardModel) -> Void
     
     var body: some View {
         GeometryReader { geometry in
@@ -42,13 +42,13 @@ struct FlashcardView: View {
                             withAnimation(.linear(duration: 0.5)) {
                                 self.translation.width = geometry.size.width
                             }
-                            completion(true)
+                            completion(true, model)
                         }
                         else if value.translation.width < -limit {
                             withAnimation(.linear(duration: 0.5)) {
                                 self.translation.width = -geometry.size.width
                             }
-                            completion(false)
+                            completion(false, model)
                         }
                         else {
                             self.translation = .zero
@@ -105,6 +105,6 @@ struct FlashcardView_Previews: PreviewProvider {
     static var previews: some View {
         FlashcardView(
             model: .init(id: .init(), front: "der Hund", back: "dog")
-        ) { _ in }
+        ) { _, _ in }
     }
 }
