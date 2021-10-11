@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 import Combine
 
 protocol FlashcardServiceProtocol {
@@ -16,16 +17,30 @@ protocol FlashcardServiceProtocol {
 class FlashcardService: FlashcardServiceProtocol {
     
     func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
-        var flashcards: AnyPublisher<[FlashcardModel], Error> {
-            Just<[FlashcardModel]>(
-                [FlashcardModel(id: .init(), front: "der Hund", back: "dog"),
-                 FlashcardModel(id: .init(), front: "die Katze", back: "cat"),
-                 FlashcardModel(id: .init(), front: "die Maus", back: "mouse")]
-            )
-                .setFailureType(to: Error.self)
-                .eraseToAnyPublisher()
-        }
         
-        return flashcards
+        let db = Firestore.firestore()
+        
+        return Future<[FlashcardModel], Error> { promise in
+            
+            db.collection("flashcards").getDocuments() { (result, error) in
+                
+                if let error = error {
+                    promise(.failure(error))
+                } else if let result = result {
+                    var flashcards: [FlashcardModel] = []
+                    for flashcard in result.documents {
+//                        guard let id = UUID(uuidString: flashcard.documentID) else {
+//                            promise(.failure(NSError()))
+//                            return
+//                        }
+                        let id = UUID()
+                        let data = flashcard.data()
+                        flashcards.append(FlashcardModel(id: id, front: data["front"] as! String,
+                                                         back: data["back"] as! String))
+                    }
+                    promise(.success(flashcards))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }
