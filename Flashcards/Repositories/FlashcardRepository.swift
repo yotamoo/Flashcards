@@ -45,14 +45,8 @@ struct FlashcardRepository: FlashcardRepositoryType {
     
     func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
         
-        service.getFlashcards().sink { _ in
-            print("done")
-        } receiveValue: { in
-            saveToUserDefaults($0)
-        }
-        
-//        service.getFlashcards().handleEvents(receiveOutput: { flashcards in
-//            saveToUserDefaults(flashcards)
-//        }).eraseToAnyPublisher()
+        service.getFlashcards().handleEvents(receiveOutput: { flashcards in
+            saveToUserDefaults(flashcards)
+        }).eraseToAnyPublisher()
     }
 }

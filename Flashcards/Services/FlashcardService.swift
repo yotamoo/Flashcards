@@ -29,10 +29,6 @@ class FlashcardService: FlashcardServiceProtocol {
                 } else if let result = result {
                     var flashcards: [FlashcardModel] = []
                     for flashcard in result.documents {
-//                        guard let id = UUID(uuidString: flashcard.documentID) else {
-//                            promise(.failure(NSError()))
-//                            return
-//                        }
                         let id = UUID()
                         let data = flashcard.data()
                         flashcards.append(FlashcardModel(id: id, front: data["front"] as! String,
