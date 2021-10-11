@@ -32,7 +32,7 @@ class DeckViewViewModelTests: QuickSpec {
             it("passes the values as is from the repository") {
                 let flashcardModel = FlashcardModel(id: .init(), front: "front", back: "back")
                 mockFlashcardRepository.flashcardsSubject.send([flashcardModel])
-                expect(sut.flashcardModels) == [flashcardModel]
+                expect(sut.flashcardModel) == flashcardModel
             }
         }
     }

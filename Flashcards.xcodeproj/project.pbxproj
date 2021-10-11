@@ -20,6 +20,7 @@
 		55C789DF270DF2A100056583 /* FlashcardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789DE270DF2A100056583 /* FlashcardService.swift */; };
 		55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E1270DF2F700056583 /* FlashcardRepository.swift */; };
 		55C789E4270DF3A600056583 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E3270DF3A600056583 /* DeckView.swift */; };
+		55E95C832710A1D6002D1759 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E95C822710A1D5002D1759 /* ProgressBarView.swift */; };
 		55F7036F2707068F00F4BE51 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7036E2707068F00F4BE51 /* FlashcardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		55C789DE270DF2A100056583 /* FlashcardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardService.swift; sourceTree = "<group>"; };
 		55C789E1270DF2F700056583 /* FlashcardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardRepository.swift; sourceTree = "<group>"; };
 		55C789E3270DF3A600056583 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
+		55E95C822710A1D5002D1759 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		55F7036E2707068F00F4BE51 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +184,7 @@
 				553201742706859500D3EDE7 /* CardView.swift */,
 				55F7036E2707068F00F4BE51 /* FlashcardView.swift */,
 				55C789E3270DF3A600056583 /* DeckView.swift */,
+				55E95C822710A1D5002D1759 /* ProgressBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55C789DC270DF28100056583 /* FlashcardModel.swift in Sources */,
+				55E95C832710A1D6002D1759 /* ProgressBarView.swift in Sources */,
 				55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */,
 				5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */,
 				55C789E4270DF3A600056583 /* DeckView.swift in Sources */,

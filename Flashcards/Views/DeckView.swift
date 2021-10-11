@@ -9,36 +9,59 @@ import SwiftUI
 import Combine
 
 class DeckViewViewModel: ObservableObject {
-    var cancellable: AnyCancellable?
-    var flashcardModels: [FlashcardModel] = []
+    @Published var progress: Double = 0
+    @Published var flashcardModel: FlashcardModel?
+    
+    private var cancellable: AnyCancellable?
+    private var flashcardModels: [FlashcardModel] = []
+    private var index: Int = 0 {
+        didSet {
+            progress = Double(index) / Double(flashcardModels.count) * 100
+        }
+    }
     
     init(flashcardRepository: FlashcardRepositoryType) {
-        cancellable = flashcardRepository.getFlashcards().prefix(1).sink { _ in
-            print("done")
+        cancellable = flashcardRepository.getFlashcards().prefix(1).sink {
+            switch $0 {
+            case let .failure(error): print(error)
+            case .finished: print("done")
+            }
         } receiveValue: { [weak self] in
             self?.flashcardModels = $0
+            self?.flashcardModel = $0.first
         }
 
     }
     
     func cardViewed(_ success: Bool, model: FlashcardModel) {
         print(success ? "well done" : "next time")
-        
-        if model == flashcardModels.first {
+        index += 1
+        if index < flashcardModels.count {
+            flashcardModel = flashcardModels[index]
+        }
+        else {
             print("finished")
+//            present well done view
         }
     }
 }
 
 struct DeckView: View {
-    let viewModel = DeckViewViewModel(flashcardRepository: FlashcardRepository())
+    @ObservedObject var viewModel = DeckViewViewModel(flashcardRepository: FlashcardRepository())
     
     var body: some View {
-        ZStack {
-            ForEach(viewModel.flashcardModels) { model in
-                FlashcardView(model: model) {
-                    viewModel.cardViewed($0, model: model)
-                }
+        return VStack {
+            if let flashcardModel = viewModel.flashcardModel {
+                FlashcardView(model: flashcardModel) {
+                    viewModel.cardViewed($0, model: $1)
+                }.id(flashcardModel.id)
+                
+                ProgressBarView(progress: viewModel.progress)
+                    .frame(width: 400, height: 30)
+            }
+            else {
+                // later well done view
+                EmptyView()
             }
         }
     }
