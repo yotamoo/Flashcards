@@ -1,8 +1,8 @@
 //
-//  DeckViewViewModelTests.swift
+//  DeckGalleryViewModelTests.swift
 //  FlashcardsTests
 //
-//  Created by Yotam Ohayon on 06.10.21.
+//  Created by Yotam Ohayon on 13.10.21.
 //
 
 import Foundation
@@ -11,17 +11,17 @@ import Nimble
 import Combine
 @testable import Flashcards
 
-class DeckViewViewModelTests: QuickSpec {
+class DeckGalleryViewModelTests: QuickSpec {
     override func spec() {
-        var sut: DeckViewViewModel!
+        var sut: DeckGalleryViewModel!
 
         beforeEach {
-            sut = DeckViewViewModel(flashcardModels: Constants.flashcards)
+            sut = DeckGalleryViewModel()
         }
 
         describe("flashcardModel") {
             it("passes the values as is from the repository") {
-                expect(sut.flashcardModel) == Constants.flashcards.first
+//                expect(sut.flashcardModel) == DeckModelEnvironment.debug.decks.first
             }
         }
     }

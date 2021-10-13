@@ -12,25 +12,26 @@ class DeckViewViewModel: ObservableObject {
     @Published var progress: Double = 0
     @Published var flashcardModel: FlashcardModel?
     
-    private var cancellable: AnyCancellable?
-    private var flashcardModels: [FlashcardModel] = []
+//    private var cancellable: AnyCancellable?
+    private let flashcardModels: [FlashcardModel]
     private var index: Int = 0 {
         didSet {
             progress = Double(index) / Double(flashcardModels.count) * 100
         }
     }
     
-    init(flashcardRepository: FlashcardRepositoryType) {
-        cancellable = flashcardRepository.getFlashcards().prefix(1).sink {
-            switch $0 {
-            case let .failure(error): print(error)
-            case .finished: print("done")
-            }
-        } receiveValue: { [weak self] in
-            self?.flashcardModels = $0
-            self?.flashcardModel = $0.first
-        }
-
+    init(flashcardModels: [FlashcardModel]) {
+//        cancellable = flashcardRepository.getFlashcards().prefix(1).sink {
+//            switch $0 {
+//            case let .failure(error): print(error)
+//            case .finished: print("done")
+//            }
+//        } receiveValue: { [weak self] in
+//            self?.flashcardModels = $0
+//            self?.flashcardModel = $0.first
+//        }
+        self.flashcardModels = flashcardModels
+        self.flashcardModel = flashcardModels.first
     }
     
     func cardViewed(_ success: Bool, model: FlashcardModel) {
@@ -47,7 +48,7 @@ class DeckViewViewModel: ObservableObject {
 }
 
 struct DeckView: View {
-    @ObservedObject var viewModel = DeckViewViewModel(flashcardRepository: FlashcardRepository())
+    @ObservedObject var viewModel: DeckViewViewModel
     
     var body: some View {
         return VStack {
@@ -69,6 +70,12 @@ struct DeckView: View {
 
 struct DeckView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckView()
+        DeckView(
+            viewModel: .init(
+                flashcardModels: [.init(id: .init(),
+                                        front: "der Hund",
+                                        back: "dog")]
+            )
+        )
     }
 }
