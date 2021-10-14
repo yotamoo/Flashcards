@@ -21,15 +21,6 @@ class DeckViewViewModel: ObservableObject {
     }
     
     init(flashcardModels: [FlashcardModel]) {
-//        cancellable = flashcardRepository.getFlashcards().prefix(1).sink {
-//            switch $0 {
-//            case let .failure(error): print(error)
-//            case .finished: print("done")
-//            }
-//        } receiveValue: { [weak self] in
-//            self?.flashcardModels = $0
-//            self?.flashcardModel = $0.first
-//        }
         self.flashcardModels = flashcardModels
         self.flashcardModel = flashcardModels.first
     }

@@ -20,8 +20,17 @@ class DeckGalleryViewModelTests: QuickSpec {
         }
 
         describe("flashcardModel") {
+            var expected: [DeckModel]!
+            
+            beforeEach {
+                expected = [.init(id: .init(), title: "title", flashcards: [
+                    .init(id: .init(), front: "1", back: "1")
+                ])]
+                mockFlashcardRepository.flashcardsSubject.send(expected)
+            }
+            
             it("passes the values as is from the repository") {
-//                expect(sut.flashcardModel) == DeckModelEnvironment.debug.decks.first
+                expect(sut.decks) == expected
             }
         }
     }

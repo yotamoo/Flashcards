@@ -12,9 +12,11 @@ struct DeckModelEnvironment {
     let decks: AnyPublisher<[DeckModel], Error>
 }
 
-private extension DeckModelEnvironment {
+let mockFlashcardRepository = FlashcardRepositoryMock()
+
+extension DeckModelEnvironment {
     static var debug: Self {
-        .init(decks: FlashcardRepositoryMock().getFlashcards())
+        .init(decks: mockFlashcardRepository.getFlashcards())
     }
     
     static var release: Self {
@@ -28,7 +30,7 @@ private let environment = DeckModelEnvironment.debug
 private let environment = DeckModelEnvironment.release
 #endif
 
-struct DeckModel: Identifiable, Codable {
+struct DeckModel: Identifiable, Codable, Equatable {
     let id: UUID
     let title: String
     let flashcards: [FlashcardModel]
@@ -67,21 +69,8 @@ struct DeckGalleryView: View {
     }
 }
 
-private let decks: [DeckModel] = [
-    .init(id: .init(), title: "foo", flashcards: [
-        .init(id: .init(), front: "1", back: "2"),
-        .init(id: .init(), front: "3", back: "4"),
-        .init(id: .init(), front: "5", back: "6"),
-    ]),
-    .init(id: .init(), title: "var", flashcards: [
-        .init(id: .init(), front: "7", back: "8"),
-        .init(id: .init(), front: "9", back: "1"),
-        .init(id: .init(), front: "11", back: "12")
-    ])
-]
-
 private let develop = DeckModelEnvironment(
-    decks: Just(decks)
+    decks: Just(Constants.decks)
         .setFailureType(to: Error.self)
         .eraseToAnyPublisher()
 )
