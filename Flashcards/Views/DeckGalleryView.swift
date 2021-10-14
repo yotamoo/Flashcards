@@ -16,7 +16,7 @@ let mockFlashcardRepository = FlashcardRepositoryMock()
 
 extension DeckModelEnvironment {
     static var debug: Self {
-        .init(decks: mockFlashcardRepository.getFlashcards())
+        .init(decks: FlashcardRepository().getFlashcards())
     }
     
     static var release: Self {

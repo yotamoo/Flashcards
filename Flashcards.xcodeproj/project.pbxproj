@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551227FD27186E3600FAC78A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551227FC27186E3600FAC78A /* Constants.swift */; };
 		5532014B2705BF6000D3EDE7 /* FlashcardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */; };
 		5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532014C2705BF6000D3EDE7 /* ContentView.swift */; };
 		5532014F2705BF6200D3EDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5532014E2705BF6200D3EDE7 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		551227FC27186E3600FAC78A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		553201472705BF6000D3EDE7 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsApp.swift; sourceTree = "<group>"; };
 		5532014C2705BF6000D3EDE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		551227FB27186E0400FAC78A /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				551227FC27186E3600FAC78A /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		5532013E2705BF6000D3EDE7 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 		553201492705BF6000D3EDE7 /* Flashcards */ = {
 			isa = PBXGroup;
 			children = (
+				551227FB27186E0400FAC78A /* Constants */,
 				55C789E0270DF2D100056583 /* Repositories */,
 				55C789DD270DF29300056583 /* Services */,
 				55C789DA270DF26500056583 /* Models */,
@@ -279,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55C789DC270DF28100056583 /* FlashcardModel.swift in Sources */,
+				551227FD27186E3600FAC78A /* Constants.swift in Sources */,
 				55D88B4C2716C88D006E05D7 /* DeckGalleryView.swift in Sources */,
 				55E95C832710A1D6002D1759 /* ProgressBarView.swift in Sources */,
 				55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */,
