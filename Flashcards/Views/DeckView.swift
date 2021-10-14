@@ -20,8 +20,6 @@ class DeckViewViewModel: ObservableObject {
         }
     }
     
-    //    var onFinish: (() -> Void)?
-    
     init(flashcardModels: [FlashcardModel]) {
         self.flashcardModels = flashcardModels
         self.flashcardModel = flashcardModels.first
@@ -35,7 +33,6 @@ class DeckViewViewModel: ObservableObject {
         }
         else {
             print("finished")
-            //            onFinish?()
             didFinish = true
         }
     }
