@@ -12,6 +12,8 @@ class DeckViewViewModel: ObservableObject {
     @Published var progress: Double = 0
     @Published var flashcardModel: FlashcardModel?
     @Published var didFinish = false
+    @Published var showAlert = false
+    let title: String
     
     private let flashcardModels: [FlashcardModel]
     private var index: Int = 0 {
@@ -20,7 +22,8 @@ class DeckViewViewModel: ObservableObject {
         }
     }
     
-    init(flashcardModels: [FlashcardModel]) {
+    init(title: String, flashcardModels: [FlashcardModel]) {
+        self.title = title
         self.flashcardModels = flashcardModels
         self.flashcardModel = flashcardModels.first
     }
@@ -35,6 +38,10 @@ class DeckViewViewModel: ObservableObject {
             print("finished")
             didFinish = true
         }
+    }
+    
+    func backButtonPressed() {
+        showAlert = true
     }
 }
 
@@ -51,19 +58,39 @@ struct DeckView: View {
             } else {
                 VStack {
                     if let flashcardModel = viewModel.flashcardModel {
-                        FlashcardView(model: flashcardModel) {
-                            viewModel.cardViewed($0, model: $1)
-                        }.id(flashcardModel.id)
+                        FlashcardView(
+                            model: flashcardModel,
+                            completion: viewModel.cardViewed
+                        ).id(flashcardModel.id)
                         
                         ProgressBarView(progress: viewModel.progress)
                             .frame(width: 400, height: 30)
                     }
                     else {
-                        // later well done view
-                        EmptyView()
+                        fatalError("no card to show")
                     }
                 }
             }
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action : {
+            viewModel.backButtonPressed()
+        }){
+            Image(systemName: "arrow.left")
+        })
+        .navigationTitle(viewModel.title)
+        .actionSheet(isPresented: $viewModel.showAlert) {
+            ActionSheet(
+                title: Text("Actions"),
+                message: Text("Available actions"),
+                buttons: [
+                    .cancel { print("cancelled") },
+                    .default(Text("Regret")),
+                    .destructive(Text("Confirm"), action: {
+                        self.mode.wrappedValue.dismiss()
+                    })
+                ]
+            )
         }
     }
 }
@@ -72,6 +99,7 @@ struct DeckView_Previews: PreviewProvider {
     static var previews: some View {
         DeckView(
             viewModel: .init(
+                title: "example",
                 flashcardModels: [.init(id: .init(),
                                         front: "der Hund",
                                         back: "dog")]

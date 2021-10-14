@@ -61,7 +61,7 @@ struct DeckGalleryView: View {
             List {
                 ForEach(viewModel.decks) { deck in
                     NavigationLink(deck.title) {
-                        DeckView(viewModel: .init(flashcardModels: deck.flashcards))
+                        DeckView(viewModel: .init(title: deck.title, flashcardModels: deck.flashcards))
                     }
                 }
             }
