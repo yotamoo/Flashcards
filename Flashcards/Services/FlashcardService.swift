@@ -11,30 +11,48 @@ import Combine
 
 protocol FlashcardServiceProtocol {
     
-    func getFlashcards() -> AnyPublisher<[FlashcardModel], Error>
+    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error>
 }
 
 class FlashcardService: FlashcardServiceProtocol {
     
-    func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
+    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
         
         let db = Firestore.firestore()
         
-        return Future<[FlashcardModel], Error> { promise in
+        return Future<[DeckModel], Error> { promise in
             
-            db.collection("flashcards").getDocuments() { (result, error) in
+            db.collection("decks").getDocuments() { (result, error) in
                 
                 if let error = error {
                     promise(.failure(error))
                 } else if let result = result {
-                    var flashcards: [FlashcardModel] = []
-                    for flashcard in result.documents {
-                        let id = UUID()
-                        let data = flashcard.data()
-                        flashcards.append(FlashcardModel(id: id, front: data["front"] as! String,
-                                                         back: data["back"] as! String))
+
+                    var decks: [DeckModel] = []
+                    
+                    for deck in result.documents {
+                        let data = deck.data()
+                        
+                        guard let title = data["title"] as? String,
+                              let flashcards = data["flashcards"] as? [Dictionary<String, String>] else {
+                                  return
+                              }
+                                                
+                        var flashcardModels: [FlashcardModel] = []
+                        for flashcard in flashcards {
+                            
+                            if let front = flashcard["front"], let back = flashcard["back"] {
+                                flashcardModels.append(FlashcardModel(id: UUID(),
+                                                                      front: front,
+                                                                      back: back))
+                            }
+                        }
+                        
+                        let deck = DeckModel(id: UUID(), title: title, flashcards: flashcardModels)
+                        decks.append(deck)
                     }
-                    promise(.success(flashcards))
+
+                    promise(.success(decks))
                 }
             }
         }.eraseToAnyPublisher()

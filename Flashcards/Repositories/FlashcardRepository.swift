@@ -10,7 +10,7 @@ import Combine
 
 protocol FlashcardRepositoryType {
     
-    func getFlashcards() -> AnyPublisher<[FlashcardModel], Error>
+    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error>
 }
 
 struct FlashcardRepository: FlashcardRepositoryType {
@@ -26,27 +26,36 @@ struct FlashcardRepository: FlashcardRepositoryType {
         self.userDefaults = UserDefaults.standard
     }
     
-    private func saveToUserDefaults(_ flashcards: [FlashcardModel]) {
-        guard let data = try? JSONEncoder().encode(flashcards) else {
+    private func saveToUserDefaults(_ decks: [DeckModel]) {
+        guard let data = try? JSONEncoder().encode(decks) else {
             fatalError("could not encode flashcards array")
         }
         
         userDefaults.set(data, forKey: key)
     }
     
-    private func fetchFromUserDefaults() -> [FlashcardModel] {
+    private func fetchFromUserDefaults() -> [DeckModel] {
         guard let data = userDefaults.data(forKey: key),
-              let parsed = try? JSONDecoder().decode([FlashcardModel].self, from: data) else {
+              let parsed = try? JSONDecoder().decode([DeckModel].self, from: data) else {
                   return []
         }
         
         return parsed
     }
     
-    func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
+    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
         
-        service.getFlashcards().handleEvents(receiveOutput: { flashcards in
-            saveToUserDefaults(flashcards)
+        service.getFlashcardDecks().handleEvents(receiveOutput: { decks in
+            saveToUserDefaults(decks)
         }).eraseToAnyPublisher()
+    }
+}
+
+struct FlashcardRepositoryMock: FlashcardRepositoryType {
+    
+    let flashcardsSubject = PassthroughSubject<[DeckModel], Error>()
+    
+    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
+        flashcardsSubject.eraseToAnyPublisher()
     }
 }
