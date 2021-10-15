@@ -8,41 +8,6 @@
 import SwiftUI
 import Combine
 
-struct DeckModelEnvironment {
-    let decks: AnyPublisher<[DeckModel], Error>
-}
-
-let mockFlashcardRepository = FlashcardRepositoryMock()
-
-extension DeckModelEnvironment {
-    static var debug: Self {
-        .init(decks: FlashcardRepository().getFlashcardDecks())
-    }
-    
-    static var release: Self {
-        .init(decks: FlashcardRepository().getFlashcardDecks())
-    }
-}
-
-#if DEBUG
-private let environment = DeckModelEnvironment.debug
-#else
-private let environment = DeckModelEnvironment.release
-#endif
-
-class DeckGalleryViewModel: ObservableObject {
-    @Published var decks: [DeckModel] = []
-    private var cancellable: AnyCancellable?
-    
-    init(environment: DeckModelEnvironment = environment) {
-        cancellable = environment.decks.sink(receiveCompletion: {
-            print($0)
-        }, receiveValue: { [weak self] in
-            self?.decks = $0
-        })
-    }
-}
-
 struct DeckGalleryView: View {
     @ObservedObject var viewModel: DeckGalleryViewModel
     
@@ -63,16 +28,10 @@ struct DeckGalleryView: View {
     }
 }
 
-private let develop = DeckModelEnvironment(
-    decks: Just(Constants.decks)
-        .setFailureType(to: Error.self)
-        .eraseToAnyPublisher()
-)
-
 struct DeckGallery_Previews: PreviewProvider {
     static var previews: some View {
         DeckGalleryView(
-            viewModel: .init(environment: develop)
+            viewModel: .init(environment: DeckModelEnvironment.mock)
         )
     }
 }

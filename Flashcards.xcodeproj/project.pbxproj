@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		551227FD27186E3600FAC78A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551227FC27186E3600FAC78A /* Constants.swift */; };
 		5532014B2705BF6000D3EDE7 /* FlashcardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */; };
 		5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532014C2705BF6000D3EDE7 /* ContentView.swift */; };
 		5532014F2705BF6200D3EDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5532014E2705BF6200D3EDE7 /* Assets.xcassets */; };
@@ -29,6 +28,10 @@
 		D10BFFBB27109DCF00E8957E /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D10BFFBA27109DCF00E8957E /* FirebaseFirestoreSwift-Beta */; };
 		D10BFFBD27109EED00E8957E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10BFFBC27109EED00E8957E /* AppDelegate.swift */; };
 		D1C297B22719A89E00235224 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C297B12719A89E00235224 /* DeckModel.swift */; };
+		D1C297B52719B38700235224 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C297B42719B38700235224 /* DeckViewModel.swift */; };
+		D1C297B72719B3FE00235224 /* DeckGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C297B62719B3FE00235224 /* DeckGalleryViewModel.swift */; };
+		D1C297BA2719B56F00235224 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C297B92719B56F00235224 /* Environment.swift */; };
+		D1C297BC2719B75100235224 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C297BB2719B75100235224 /* Mocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		551227FC27186E3600FAC78A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		553201472705BF6000D3EDE7 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsApp.swift; sourceTree = "<group>"; };
 		5532014C2705BF6000D3EDE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,10 @@
 		D10BFFB527109C9800E8957E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D10BFFBC27109EED00E8957E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1C297B12719A89E00235224 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
+		D1C297B42719B38700235224 /* DeckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
+		D1C297B62719B3FE00235224 /* DeckGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckGalleryViewModel.swift; sourceTree = "<group>"; };
+		D1C297B92719B56F00235224 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		D1C297BB2719B75100235224 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,17 +92,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		551227FB27186E0400FAC78A /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				551227FC27186E3600FAC78A /* Constants.swift */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
 		5532013E2705BF6000D3EDE7 = {
 			isa = PBXGroup;
 			children = (
+				5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */,
 				553201492705BF6000D3EDE7 /* Flashcards */,
 				5532015A2705BF6200D3EDE7 /* FlashcardsTests */,
 				553201482705BF6000D3EDE7 /* Products */,
@@ -117,12 +116,12 @@
 			isa = PBXGroup;
 			children = (
 				D10BFFBC27109EED00E8957E /* AppDelegate.swift */,
-				551227FB27186E0400FAC78A /* Constants */,
 				55C789E0270DF2D100056583 /* Repositories */,
 				55C789DD270DF29300056583 /* Services */,
 				55C789DA270DF26500056583 /* Models */,
 				55F703702708844700F4BE51 /* Views */,
-				5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */,
+				D1C297B32719B35B00235224 /* ViewModels */,
+				D1C297B82719B55E00235224 /* Utils */,
 				5532014E2705BF6200D3EDE7 /* Assets.xcassets */,
 				553201502705BF6200D3EDE7 /* Preview Content */,
 				D10BFFB527109C9800E8957E /* GoogleService-Info.plist */,
@@ -190,6 +189,24 @@
 				55D88B4B2716C88D006E05D7 /* DeckGalleryView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D1C297B32719B35B00235224 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D1C297B42719B38700235224 /* DeckViewModel.swift */,
+				D1C297B62719B3FE00235224 /* DeckGalleryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D1C297B82719B55E00235224 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D1C297B92719B56F00235224 /* Environment.swift */,
+				D1C297BB2719B75100235224 /* Mocks.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,10 +324,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				55C789DC270DF28100056583 /* FlashcardModel.swift in Sources */,
-				551227FD27186E3600FAC78A /* Constants.swift in Sources */,
+				D1C297BA2719B56F00235224 /* Environment.swift in Sources */,
 				55D88B4C2716C88D006E05D7 /* DeckGalleryView.swift in Sources */,
 				55E95C832710A1D6002D1759 /* ProgressBarView.swift in Sources */,
 				55C789E2270DF2F700056583 /* FlashcardRepository.swift in Sources */,
+				D1C297BC2719B75100235224 /* Mocks.swift in Sources */,
+				D1C297B72719B3FE00235224 /* DeckGalleryViewModel.swift in Sources */,
+				D1C297B52719B38700235224 /* DeckViewModel.swift in Sources */,
 				5532014D2705BF6000D3EDE7 /* ContentView.swift in Sources */,
 				D10BFFBD27109EED00E8957E /* AppDelegate.swift in Sources */,
 				55C789E4270DF3A600056583 /* DeckView.swift in Sources */,
