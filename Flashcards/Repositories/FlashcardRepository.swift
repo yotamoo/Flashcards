@@ -10,7 +10,7 @@ import Combine
 
 protocol FlashcardRepositoryType {
     
-    func getFlashcards() -> AnyPublisher<[DeckModel], Error>
+    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error>
 }
 
 struct FlashcardRepository: FlashcardRepositoryType {
@@ -26,8 +26,8 @@ struct FlashcardRepository: FlashcardRepositoryType {
         self.userDefaults = UserDefaults.standard
     }
     
-    private func saveToUserDefaults(_ flashcards: [DeckModel]) {
-        guard let data = try? JSONEncoder().encode(flashcards) else {
+    private func saveToUserDefaults(_ decks: [DeckModel]) {
+        guard let data = try? JSONEncoder().encode(decks) else {
             fatalError("could not encode flashcards array")
         }
         
@@ -43,17 +43,19 @@ struct FlashcardRepository: FlashcardRepositoryType {
         return parsed
     }
     
-    func getFlashcards() -> AnyPublisher<[DeckModel], Error> {
+    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
         
-        service.getFlashcards().handleEvents(receiveOutput: { flashcards in
-            saveToUserDefaults(flashcards)
+        service.getFlashcardDecks().handleEvents(receiveOutput: { decks in
+            saveToUserDefaults(decks)
         }).eraseToAnyPublisher()
     }
 }
 
 struct FlashcardRepositoryMock: FlashcardRepositoryType {
+    
     let flashcardsSubject = PassthroughSubject<[DeckModel], Error>()
-    func getFlashcards() -> AnyPublisher<[DeckModel], Error> {
+    
+    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
         flashcardsSubject.eraseToAnyPublisher()
     }
 }

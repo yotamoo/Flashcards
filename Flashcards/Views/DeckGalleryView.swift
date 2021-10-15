@@ -16,11 +16,11 @@ let mockFlashcardRepository = FlashcardRepositoryMock()
 
 extension DeckModelEnvironment {
     static var debug: Self {
-        .init(decks: FlashcardRepository().getFlashcards())
+        .init(decks: FlashcardRepository().getFlashcardDecks())
     }
     
     static var release: Self {
-        .init(decks: FlashcardRepository().getFlashcards())
+        .init(decks: FlashcardRepository().getFlashcardDecks())
     }
 }
 
@@ -29,12 +29,6 @@ private let environment = DeckModelEnvironment.debug
 #else
 private let environment = DeckModelEnvironment.release
 #endif
-
-struct DeckModel: Identifiable, Codable, Equatable {
-    let id: UUID
-    let title: String
-    let flashcards: [FlashcardModel]
-}
 
 class DeckGalleryViewModel: ObservableObject {
     @Published var decks: [DeckModel] = []
