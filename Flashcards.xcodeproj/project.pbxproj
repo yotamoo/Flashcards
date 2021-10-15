@@ -25,6 +25,7 @@
 		D10BFFB927109DCF00E8957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D10BFFB827109DCF00E8957E /* FirebaseFirestore */; };
 		D10BFFBB27109DCF00E8957E /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D10BFFBA27109DCF00E8957E /* FirebaseFirestoreSwift-Beta */; };
 		D10BFFBD27109EED00E8957E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10BFFBC27109EED00E8957E /* AppDelegate.swift */; };
+		D18FCBE92719A6D300D39E76 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18FCBE82719A6D300D39E76 /* DeckModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		55F7036E2707068F00F4BE51 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		D10BFFB527109C9800E8957E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D10BFFBC27109EED00E8957E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D18FCBE82719A6D300D39E76 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				55C789DB270DF28100056583 /* FlashcardModel.swift */,
+				D18FCBE82719A6D300D39E76 /* DeckModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				D10BFFBD27109EED00E8957E /* AppDelegate.swift in Sources */,
 				55C789E4270DF3A600056583 /* DeckView.swift in Sources */,
 				553201752706859500D3EDE7 /* CardView.swift in Sources */,
+				D18FCBE92719A6D300D39E76 /* DeckModel.swift in Sources */,
 				5532014B2705BF6000D3EDE7 /* FlashcardsApp.swift in Sources */,
 				55C789DF270DF2A100056583 /* FlashcardService.swift in Sources */,
 				55F7036F2707068F00F4BE51 /* FlashcardView.swift in Sources */,

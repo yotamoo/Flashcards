@@ -13,7 +13,7 @@ class DeckViewViewModel: ObservableObject {
     var flashcardModels: [FlashcardModel] = []
     
     init(flashcardRepository: FlashcardRepositoryType) {
-        cancellable = flashcardRepository.getFlashcards()/*.prefix(1)*/.sink { _ in
+        cancellable = flashcardRepository.getFlashcardDecks().sink { _ in
             print("done")
         } receiveValue: { [weak self] in
             self?.flashcardModels = $0
