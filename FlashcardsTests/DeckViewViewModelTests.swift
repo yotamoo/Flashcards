@@ -16,7 +16,7 @@ class DeckViewViewModelTests: QuickSpec {
         var sut: DeckViewViewModel!
 
         beforeEach {
-            sut = DeckViewViewModel(flashcardModels: Constants.flashcards)
+            sut = DeckViewViewModel(title: "title", flashcardModels: Constants.flashcards)
         }
 
         describe("flashcardModel") {
