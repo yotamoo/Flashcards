@@ -11,26 +11,21 @@ import Combine
 class DeckViewViewModel: ObservableObject {
     @Published var progress: Double = 0
     @Published var flashcardModel: FlashcardModel?
+    @Published var didFinish = false
+    @Published var showAlert = false
+    let title: String
     
-    private var cancellable: AnyCancellable?
-    private var flashcardModels: [FlashcardModel] = []
+    private let flashcardModels: [FlashcardModel]
     private var index: Int = 0 {
         didSet {
             progress = Double(index) / Double(flashcardModels.count) * 100
         }
     }
     
-    init(flashcardRepository: FlashcardRepositoryType) {
-        cancellable = flashcardRepository.getFlashcards().prefix(1).sink {
-            switch $0 {
-            case let .failure(error): print(error)
-            case .finished: print("done")
-            }
-        } receiveValue: { [weak self] in
-            self?.flashcardModels = $0
-            self?.flashcardModel = $0.first
-        }
-
+    init(title: String, flashcardModels: [FlashcardModel]) {
+        self.title = title
+        self.flashcardModels = flashcardModels
+        self.flashcardModel = flashcardModels.first
     }
     
     func cardViewed(_ success: Bool, model: FlashcardModel) {
@@ -41,34 +36,74 @@ class DeckViewViewModel: ObservableObject {
         }
         else {
             print("finished")
-//            present well done view
+            didFinish = true
         }
+    }
+    
+    func backButtonPressed() {
+        showAlert = true
     }
 }
 
 struct DeckView: View {
-    @ObservedObject var viewModel = DeckViewViewModel(flashcardRepository: FlashcardRepository())
+    @ObservedObject var viewModel: DeckViewViewModel
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
-        return VStack {
-            if let flashcardModel = viewModel.flashcardModel {
-                FlashcardView(model: flashcardModel) {
-                    viewModel.cardViewed($0, model: $1)
-                }.id(flashcardModel.id)
-                
-                ProgressBarView(progress: viewModel.progress)
-                    .frame(width: 400, height: 30)
+        ZStack {
+            if viewModel.didFinish {
+                Button("Well Done") {
+                    self.mode.wrappedValue.dismiss()
+                }
+            } else {
+                VStack {
+                    if let flashcardModel = viewModel.flashcardModel {
+                        FlashcardView(
+                            model: flashcardModel,
+                            completion: viewModel.cardViewed
+                        ).id(flashcardModel.id)
+                        
+                        ProgressBarView(progress: viewModel.progress)
+                            .frame(width: 400, height: 30)
+                    }
+                    else {
+                        fatalError("no card to show")
+                    }
+                }
             }
-            else {
-                // later well done view
-                EmptyView()
-            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action : {
+            viewModel.backButtonPressed()
+        }){
+            Image(systemName: "arrow.left")
+        })
+        .navigationTitle(viewModel.title)
+        .actionSheet(isPresented: $viewModel.showAlert) {
+            ActionSheet(
+                title: Text("Actions"),
+                message: Text("Available actions"),
+                buttons: [
+                    .cancel { print("cancelled") },
+                    .default(Text("Regret")),
+                    .destructive(Text("Confirm"), action: {
+                        self.mode.wrappedValue.dismiss()
+                    })
+                ]
+            )
         }
     }
 }
 
 struct DeckView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckView()
+        DeckView(
+            viewModel: .init(
+                title: "example",
+                flashcardModels: [.init(id: .init(),
+                                        front: "der Hund",
+                                        back: "dog")]
+            )
+        )
     }
 }

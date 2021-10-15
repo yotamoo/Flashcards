@@ -10,17 +10,15 @@ import Combine
 
 protocol FlashcardServiceProtocol {
     
-    func getFlashcards() -> AnyPublisher<[FlashcardModel], Error>
+    func getFlashcards() -> AnyPublisher<[DeckModel], Error>
 }
 
 class FlashcardService: FlashcardServiceProtocol {
     
-    func getFlashcards() -> AnyPublisher<[FlashcardModel], Error> {
-        var flashcards: AnyPublisher<[FlashcardModel], Error> {
-            Just<[FlashcardModel]>(
-                [FlashcardModel(id: .init(), front: "der Hund", back: "dog"),
-                 FlashcardModel(id: .init(), front: "die Katze", back: "cat"),
-                 FlashcardModel(id: .init(), front: "die Maus", back: "mouse")]
+    func getFlashcards() -> AnyPublisher<[DeckModel], Error> {
+        var flashcards: AnyPublisher<[DeckModel], Error> {
+            Just<[DeckModel]>(
+                Constants.decks
             )
                 .setFailureType(to: Error.self)
                 .eraseToAnyPublisher()
