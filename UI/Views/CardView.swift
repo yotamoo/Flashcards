@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-struct CardView: View {
+public struct CardView: View {
     let text: String
+
+    public init(text: String) {
+        self.text = text
+    }
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.blue)

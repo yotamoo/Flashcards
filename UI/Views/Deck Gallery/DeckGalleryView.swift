@@ -8,14 +8,14 @@
 import SwiftUI
 import Combine
 
-struct DeckGalleryView: View {
+public struct DeckGalleryView: View {
     @ObservedObject var viewModel: DeckGalleryViewModel
     
-    init(viewModel: DeckGalleryViewModel = DeckGalleryViewModel()) {
+    public init(viewModel: DeckGalleryViewModel) {
         self.viewModel = viewModel
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.decks) { deck in

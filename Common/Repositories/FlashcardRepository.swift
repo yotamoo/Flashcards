@@ -8,20 +8,16 @@
 import Foundation
 import Combine
 
-protocol FlashcardRepositoryType {
-    
+public protocol FlashcardRepositoryType {
     func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error>
 }
 
-struct FlashcardRepository: FlashcardRepositoryType {
-    
+public struct FlashcardRepository: FlashcardRepositoryType {
     private let service: FlashcardServiceProtocol
-    
     private var userDefaults: UserDefaults
-    
     private let key = "flashcards"
     
-    init() {
+    public init() {
         self.service = FlashcardService()
         self.userDefaults = UserDefaults.standard
     }
@@ -43,8 +39,7 @@ struct FlashcardRepository: FlashcardRepositoryType {
         return parsed
     }
     
-    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
-        
+    public func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
         service.getFlashcardDecks().handleEvents(receiveOutput: { decks in
             saveToUserDefaults(decks)
         }).eraseToAnyPublisher()

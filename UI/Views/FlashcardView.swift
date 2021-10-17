@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
+import Common
 
-struct FlashcardView: View {
+public struct FlashcardView: View {
     @State private var flipped = false
     @State private var animate3d = false
     @State private var translation: CGSize = .zero
     
     let model: FlashcardModel
     let completion: (Bool, FlashcardModel) -> Void
+
+    public init(model: FlashcardModel, completion: @escaping (Bool, FlashcardModel) -> Void) {
+        self.model = model
+        self.completion = completion
+    }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             ZStack {
                 CardView(text: model.front).opacity(flipped ? 0.0 : 1.0)

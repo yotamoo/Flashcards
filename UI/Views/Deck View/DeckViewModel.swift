@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Common
 
-class DeckViewViewModel: ObservableObject {
+public class DeckViewViewModel: ObservableObject {
     @Published var progress: Double = 0
     @Published var flashcardModel: FlashcardModel?
     @Published var didFinish = false

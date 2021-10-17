@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Mocks {
-    static let flashcards: [FlashcardModel] =
+public struct Mocks {
+    public static let flashcards: [FlashcardModel] =
     [.init(id: .init(),
            front: "der Hund",
            back: "dog"),
@@ -20,7 +20,7 @@ struct Mocks {
            back: "mouse"),
     ]
     
-    static let decks: [DeckModel] = [
+    public static let decks: [DeckModel] = [
         .init(id: .init(),
               title: "Deck 1",
               flashcards: Mocks.flashcards),

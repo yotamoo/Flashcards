@@ -7,12 +7,17 @@
 
 import SwiftUI
 import Combine
+import Common
 
-struct DeckView: View {
+public struct DeckView: View {
     @ObservedObject var viewModel: DeckViewViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+
+    public init(viewModel: DeckViewViewModel) {
+        self.viewModel = viewModel
+    }
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             if viewModel.didFinish {
                 Button("Well Done") {

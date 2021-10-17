@@ -9,15 +9,14 @@ import Foundation
 import Firebase
 import Combine
 
-protocol FlashcardServiceProtocol {
-    
+public protocol FlashcardServiceProtocol {
     func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error>
 }
 
-class FlashcardService: FlashcardServiceProtocol {
-    
-    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
-        
+public class FlashcardService: FlashcardServiceProtocol {
+    public init() {}
+
+    public func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
         let db = Firestore.firestore()
         
         return Future<[DeckModel], Error> { promise in
