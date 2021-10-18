@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-struct ProgressBarView: View, Animatable {
+public struct ProgressBarView: View, Animatable {
     var progress: Double
     
-    var animatableData: Double {
+    public var animatableData: Double {
         get { progress }
         set { progress = newValue }
     }
+
+    public init(progress: Double) {
+        self.progress = progress
+    }
     
-    var body: some View {
+    public var body: some View {
         return GeometryReader { geometry in
             RoundedRectangle(
                 cornerSize: .init(width: 10, height: 10)

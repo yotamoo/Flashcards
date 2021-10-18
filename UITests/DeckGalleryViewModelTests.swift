@@ -9,9 +9,13 @@ import Foundation
 import Quick
 import Nimble
 import Combine
-@testable import Flashcards
+import Common
+@testable import UI
 
 class DeckGalleryViewModelTests: QuickSpec {
+    
+    private var flashcardRepository = FlashcardRepositoryMock()
+    
     override func spec() {
         var sut: DeckGalleryViewModel!
 
@@ -26,7 +30,7 @@ class DeckGalleryViewModelTests: QuickSpec {
                 expected = [.init(id: .init(), title: "title", flashcards: [
                     .init(id: .init(), front: "1", back: "1")
                 ])]
-                mockFlashcardRepository.flashcardsSubject.send(expected)
+                self.flashcardRepository.flashcardsSubject.send(expected)
             }
             
             it("passes the values as is from the repository") {

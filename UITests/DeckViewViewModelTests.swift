@@ -9,19 +9,20 @@ import Foundation
 import Quick
 import Nimble
 import Combine
-@testable import Flashcards
+import Common
+@testable import UI
 
 class DeckViewViewModelTests: QuickSpec {
     override func spec() {
         var sut: DeckViewViewModel!
 
         beforeEach {
-            sut = DeckViewViewModel(title: "title", flashcardModels: Constants.flashcards)
+            sut = DeckViewViewModel(title: "title", flashcardModels: Mocks.flashcards)
         }
 
         describe("flashcardModel") {
             it("passes the values as is from the repository") {
-                expect(sut.flashcardModel) == Constants.flashcards.first
+                expect(sut.flashcardModel) == Mocks.flashcards.first
             }
         }
     }

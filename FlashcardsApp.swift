@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UI
 
 @main
 struct FlashcardsApp: App {

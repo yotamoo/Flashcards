@@ -1,14 +1,14 @@
 //
-//  Constants.swift
+//  Mock.swift
 //  Flashcards
 //
-//  Created by Yotam Ohayon on 14.10.21.
+//  Created by Justyna Kleczar on 15/10/2021.
 //
 
 import Foundation
 
-struct Constants {
-    static let flashcards: [FlashcardModel] =
+public struct Mocks {
+    public static let flashcards: [FlashcardModel] =
     [.init(id: .init(),
            front: "der Hund",
            back: "dog"),
@@ -20,15 +20,15 @@ struct Constants {
            back: "mouse"),
     ]
     
-    static let decks: [DeckModel] = [
+    public static let decks: [DeckModel] = [
         .init(id: .init(),
               title: "Deck 1",
-              flashcards: Constants.flashcards),
+              flashcards: Mocks.flashcards),
         .init(id: .init(),
               title: "Deck 2",
-              flashcards: Constants.flashcards),
+              flashcards: Mocks.flashcards),
         .init(id: .init(),
               title: "Deck 3",
-              flashcards: Constants.flashcards),
+              flashcards: Mocks.flashcards),
     ]
 }

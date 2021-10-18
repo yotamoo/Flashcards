@@ -42,9 +42,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "553201602705BF6200D3EDE7"
-               BuildableName = "FlashcardsUITests.xctest"
-               BlueprintName = "FlashcardsUITests"
+               BlueprintIdentifier = "552670D9271D49DB001DB1A0"
+               BuildableName = "UITests.xctest"
+               BlueprintName = "UITests"
                ReferencedContainer = "container:Flashcards.xcodeproj">
             </BuildableReference>
          </TestableReference>
