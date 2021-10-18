@@ -9,7 +9,8 @@ import Foundation
 import Quick
 import Nimble
 import Combine
-@testable import Flashcards
+import Common
+@testable import UI
 
 class DeckGalleryViewModelTests: QuickSpec {
     
