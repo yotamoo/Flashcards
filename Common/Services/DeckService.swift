@@ -9,11 +9,7 @@ import Foundation
 import Firebase
 import Combine
 
-public protocol DeckServiceProtocol {
-    func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error>
-}
-
-public class DeckService: DeckServiceProtocol {
+public struct DeckService {
     public init() {}
 
     public func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {

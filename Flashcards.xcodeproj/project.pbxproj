@@ -16,6 +16,7 @@
 		5532014F2705BF6200D3EDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5532014E2705BF6200D3EDE7 /* Assets.xcassets */; };
 		553201522705BF6200D3EDE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553201512705BF6200D3EDE7 /* Preview Assets.xcassets */; };
 		5547535627298DC5009D2E40 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547535527298DC5009D2E40 /* Store.swift */; };
+		5547535A27299910009D2E40 /* DeckRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547535927299910009D2E40 /* DeckRepositoryTests.swift */; };
 		554B4291271E05A3003E1ED8 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55517B2D271C568F005C8D12 /* Common.framework */; platformFilter = ios; };
 		554B4298271E05BE003E1ED8 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 554B4297271E05BE003E1ED8 /* Quick */; };
 		554B429A271E05BE003E1ED8 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 554B4299271E05BE003E1ED8 /* Nimble */; };
@@ -148,6 +149,7 @@
 		553201512705BF6200D3EDE7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		553201742706859500D3EDE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5547535527298DC5009D2E40 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		5547535927299910009D2E40 /* DeckRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepositoryTests.swift; sourceTree = "<group>"; };
 		554B428D271E05A3003E1ED8 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42A3271ED62B003E1ED8 /* FlashcardsRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashcardsRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsReduxApp.swift; sourceTree = "<group>"; };
@@ -267,7 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				55517B2E271C568F005C8D12 /* Common */,
-				554B428E271E05A3003E1ED8 /* CommonTests */,
+				55475357272998DF009D2E40 /* CommonTests */,
 				553201492705BF6000D3EDE7 /* Flashcards */,
 				554B42A4271ED62B003E1ED8 /* FlashcardsRedux */,
 				554B42B5271ED62D003E1ED8 /* FlashcardsReduxTests */,
@@ -316,17 +318,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		554B428E271E05A3003E1ED8 /* CommonTests */ = {
+		55475357272998DF009D2E40 /* CommonTests */ = {
 			isa = PBXGroup;
 			children = (
-				554B429B271E05C8003E1ED8 /* Repositories */,
+				55475358272998FA009D2E40 /* Repositories */,
 			);
 			path = CommonTests;
 			sourceTree = "<group>";
 		};
-		554B429B271E05C8003E1ED8 /* Repositories */ = {
+		55475358272998FA009D2E40 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				5547535927299910009D2E40 /* DeckRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -668,7 +671,7 @@
 					};
 					554B428C271E05A3003E1ED8 = {
 						CreatedOnToolsVersion = 13.0;
-						LastSwiftMigration = 1300;
+						LastSwiftMigration = 1310;
 					};
 					554B42A2271ED62B003E1ED8 = {
 						CreatedOnToolsVersion = 13.0;
@@ -808,6 +811,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5547535A27299910009D2E40 /* DeckRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ struct DeckModelEnvironment {
 
 extension DeckModelEnvironment {
     static var live: Self {
-        .init(decks: DeckRepository().getFlashcardDecks())
+        .init(decks: DeckRepository().decks)
     }
 }
 
