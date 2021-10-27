@@ -61,7 +61,6 @@
 		5580C85F270E2E160002E67C /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 5580C85E270E2E160002E67C /* Quick */; };
 		D10BFFB627109C9800E8957E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D10BFFB527109C9800E8957E /* GoogleService-Info.plist */; };
 		D10BFFBD27109EED00E8957E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10BFFBC27109EED00E8957E /* AppDelegate.swift */; };
-		D1C297BA2719B56F00235224 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C297B92719B56F00235224 /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,7 +197,6 @@
 		D1C297B12719A89E00235224 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
 		D1C297B42719B38700235224 /* DeckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
 		D1C297B62719B3FE00235224 /* DeckGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckGalleryViewModel.swift; sourceTree = "<group>"; };
-		D1C297B92719B56F00235224 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D1C297BB2719B75100235224 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -491,7 +489,6 @@
 		D1C297B82719B55E00235224 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D1C297B92719B56F00235224 /* Environment.swift */,
 				D1C297BB2719B75100235224 /* Mocks.swift */,
 			);
 			path = Utils;
@@ -865,7 +862,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				554B4284271DE884003E1ED8 /* DummyScreen.swift in Sources */,
-				D1C297BA2719B56F00235224 /* Environment.swift in Sources */,
 				D10BFFBD27109EED00E8957E /* AppDelegate.swift in Sources */,
 				5532014B2705BF6000D3EDE7 /* FlashcardsApp.swift in Sources */,
 			);
