@@ -31,7 +31,7 @@ class DummyModelRepositoryTests: QuickSpec {
                 cancellable = sut.models.sink { result = $0 }
             }
 
-            it("passes the values as is from the repository") {
+            it("does not have a start value") {
                 expect(result).to(beNil())
             }
 
@@ -41,6 +41,7 @@ class DummyModelRepositoryTests: QuickSpec {
 
             context("when there are models") {
                 var model: DummyModel!
+                
                 beforeEach {
                     model = .init()
                     subject.send([model])
