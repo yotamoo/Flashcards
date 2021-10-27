@@ -23,8 +23,6 @@
 		554B42AA271ED62D003E1ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554B42A9271ED62D003E1ED8 /* Assets.xcassets */; };
 		554B42AD271ED62D003E1ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554B42AC271ED62D003E1ED8 /* Preview Assets.xcassets */; };
 		554B42B7271ED62D003E1ED8 /* FlashcardsReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42B6271ED62D003E1ED8 /* FlashcardsReduxTests.swift */; };
-		554B42C1271ED62D003E1ED8 /* FlashcardsReduxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42C0271ED62D003E1ED8 /* FlashcardsReduxUITests.swift */; };
-		554B42C3271ED62D003E1ED8 /* FlashcardsReduxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42C2271ED62D003E1ED8 /* FlashcardsReduxUITestsLaunchTests.swift */; };
 		554B42D1271ED65E003E1ED8 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55517B2D271C568F005C8D12 /* Common.framework */; };
 		554B42D2271ED65E003E1ED8 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55517B02271C5475005C8D12 /* UI.framework */; };
 		554B957F272987A800C67E49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532014C2705BF6000D3EDE7 /* ContentView.swift */; };
@@ -74,13 +72,6 @@
 			remoteInfo = Common;
 		};
 		554B42B3271ED62D003E1ED8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5532013F2705BF6000D3EDE7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 554B42A2271ED62B003E1ED8;
-			remoteInfo = FlashcardsRedux;
-		};
-		554B42BD271ED62D003E1ED8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5532013F2705BF6000D3EDE7 /* Project object */;
 			proxyType = 1;
@@ -163,9 +154,6 @@
 		554B42AC271ED62D003E1ED8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		554B42B2271ED62D003E1ED8 /* FlashcardsReduxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsReduxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42B6271ED62D003E1ED8 /* FlashcardsReduxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsReduxTests.swift; sourceTree = "<group>"; };
-		554B42BC271ED62D003E1ED8 /* FlashcardsReduxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsReduxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		554B42C0271ED62D003E1ED8 /* FlashcardsReduxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsReduxUITests.swift; sourceTree = "<group>"; };
-		554B42C2271ED62D003E1ED8 /* FlashcardsReduxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsReduxUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		554B958627298B4900C67E49 /* FlashcardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55517B02271C5475005C8D12 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55517B04271C5475005C8D12 /* UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
@@ -236,13 +224,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		554B42B9271ED62D003E1ED8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		554B958327298B4900C67E49 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,7 +269,6 @@
 				553201492705BF6000D3EDE7 /* Flashcards */,
 				554B42A4271ED62B003E1ED8 /* FlashcardsRedux */,
 				554B42B5271ED62D003E1ED8 /* FlashcardsReduxTests */,
-				554B42BF271ED62D003E1ED8 /* FlashcardsReduxUITests */,
 				554B958727298B4900C67E49 /* FlashcardsTests */,
 				5580C85B270E2E130002E67C /* Frameworks */,
 				553201482705BF6000D3EDE7 /* Products */,
@@ -307,7 +287,6 @@
 				554B428D271E05A3003E1ED8 /* CommonTests.xctest */,
 				554B42A3271ED62B003E1ED8 /* FlashcardsRedux.app */,
 				554B42B2271ED62D003E1ED8 /* FlashcardsReduxTests.xctest */,
-				554B42BC271ED62D003E1ED8 /* FlashcardsReduxUITests.xctest */,
 				554B958627298B4900C67E49 /* FlashcardsTests.xctest */,
 			);
 			name = Products;
@@ -375,15 +354,6 @@
 				554B42B6271ED62D003E1ED8 /* FlashcardsReduxTests.swift */,
 			);
 			path = FlashcardsReduxTests;
-			sourceTree = "<group>";
-		};
-		554B42BF271ED62D003E1ED8 /* FlashcardsReduxUITests */ = {
-			isa = PBXGroup;
-			children = (
-				554B42C0271ED62D003E1ED8 /* FlashcardsReduxUITests.swift */,
-				554B42C2271ED62D003E1ED8 /* FlashcardsReduxUITestsLaunchTests.swift */,
-			);
-			path = FlashcardsReduxUITests;
 			sourceTree = "<group>";
 		};
 		554B958727298B4900C67E49 /* FlashcardsTests */ = {
@@ -612,24 +582,6 @@
 			productReference = 554B42B2271ED62D003E1ED8 /* FlashcardsReduxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		554B42BB271ED62D003E1ED8 /* FlashcardsReduxUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 554B42CA271ED62D003E1ED8 /* Build configuration list for PBXNativeTarget "FlashcardsReduxUITests" */;
-			buildPhases = (
-				554B42B8271ED62D003E1ED8 /* Sources */,
-				554B42B9271ED62D003E1ED8 /* Frameworks */,
-				554B42BA271ED62D003E1ED8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				554B42BE271ED62D003E1ED8 /* PBXTargetDependency */,
-			);
-			name = FlashcardsReduxUITests;
-			productName = FlashcardsReduxUITests;
-			productReference = 554B42BC271ED62D003E1ED8 /* FlashcardsReduxUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		554B958527298B4900C67E49 /* FlashcardsTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 554B958C27298B4900C67E49 /* Build configuration list for PBXNativeTarget "FlashcardsTests" */;
@@ -722,10 +674,6 @@
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 554B42A2271ED62B003E1ED8;
 					};
-					554B42BB271ED62D003E1ED8 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 554B42A2271ED62B003E1ED8;
-					};
 					554B958527298B4900C67E49 = {
 						CreatedOnToolsVersion = 13.1;
 						TestTargetID = 553201462705BF6000D3EDE7;
@@ -764,7 +712,6 @@
 				554B428C271E05A3003E1ED8 /* CommonTests */,
 				554B42A2271ED62B003E1ED8 /* FlashcardsRedux */,
 				554B42B1271ED62D003E1ED8 /* FlashcardsReduxTests */,
-				554B42BB271ED62D003E1ED8 /* FlashcardsReduxUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -804,13 +751,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		554B42B0271ED62D003E1ED8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		554B42BA271ED62D003E1ED8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -885,15 +825,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		554B42B8271ED62D003E1ED8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				554B42C3271ED62D003E1ED8 /* FlashcardsReduxUITestsLaunchTests.swift in Sources */,
-				554B42C1271ED62D003E1ED8 /* FlashcardsReduxUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		554B958227298B4900C67E49 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -948,11 +879,6 @@
 			isa = PBXTargetDependency;
 			target = 554B42A2271ED62B003E1ED8 /* FlashcardsRedux */;
 			targetProxy = 554B42B3271ED62D003E1ED8 /* PBXContainerItemProxy */;
-		};
-		554B42BE271ED62D003E1ED8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 554B42A2271ED62B003E1ED8 /* FlashcardsRedux */;
-			targetProxy = 554B42BD271ED62D003E1ED8 /* PBXContainerItemProxy */;
 		};
 		554B42CE271ED658003E1ED8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1364,52 +1290,6 @@
 			};
 			name = Release;
 		};
-		554B42CB271ED62D003E1ED8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6Y485Z3XGX;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.learning.FlashcardsReduxUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FlashcardsRedux;
-			};
-			name = Debug;
-		};
-		554B42CC271ED62D003E1ED8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6Y485Z3XGX;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.learning.FlashcardsReduxUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FlashcardsRedux;
-			};
-			name = Release;
-		};
 		554B958D27298B4900C67E49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1637,15 +1517,6 @@
 			buildConfigurations = (
 				554B42C8271ED62D003E1ED8 /* Debug */,
 				554B42C9271ED62D003E1ED8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		554B42CA271ED62D003E1ED8 /* Build configuration list for PBXNativeTarget "FlashcardsReduxUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				554B42CB271ED62D003E1ED8 /* Debug */,
-				554B42CC271ED62D003E1ED8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

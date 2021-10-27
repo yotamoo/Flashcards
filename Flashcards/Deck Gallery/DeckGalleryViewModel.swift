@@ -24,10 +24,11 @@ class DeckGalleryViewModel: ObservableObject {
     private var cancellable: AnyCancellable?
     
     init(environment: DeckModelEnvironment = .live) {
-        cancellable = environment.decks.sink(receiveCompletion: {
-            print($0)
-        }, receiveValue: { [weak self] in
-            self?.decks = $0
-        })
+        cancellable = environment.decks.sink(
+            receiveCompletion: { _ in },
+            receiveValue: { [weak self] in
+                self?.decks = $0
+            }
+        )
     }
 }
