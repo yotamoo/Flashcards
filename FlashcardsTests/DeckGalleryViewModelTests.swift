@@ -10,7 +10,7 @@ import Quick
 import Nimble
 import Combine
 import Common
-@testable import UI
+@testable import Flashcards
 
 class DeckGalleryViewModelTests: QuickSpec {
     override func spec() {

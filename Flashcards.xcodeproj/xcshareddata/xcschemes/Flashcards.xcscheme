@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "553201562705BF6200D3EDE7"
+               BlueprintIdentifier = "554B958527298B4900C67E49"
                BuildableName = "FlashcardsTests.xctest"
                BlueprintName = "FlashcardsTests"
                ReferencedContainer = "container:Flashcards.xcodeproj">
