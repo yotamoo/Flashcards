@@ -9,35 +9,65 @@ import Foundation
 import Firebase
 import Combine
 
-public protocol CollectionWrapper: AnyObject {
-    func getDocuments(completion: @escaping (QuerySnapshot?, Error?) -> Void)
+public struct DeckModelEnvironment {
+    let fetch: (String, @escaping ([DeckModel]?, Error?) -> Void) -> Void
 }
 
-extension CollectionReference: CollectionWrapper {}
+public extension DeckModelEnvironment {
+    static var live: Self {
+        .init { collectionName, completion in
+            Firestore.firestore().collection(collectionName).getDocuments { querySnapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                    return
+                }
+
+                guard let documents = querySnapshot?.documents  else {
+                    completion(nil, DeckServiceError.general)
+                    fatalError()
+                }
+
+                completion(documents.asDeckModels, nil)
+            }
+        }
+    }
+}
 
 public struct DeckService {
     let decks: AnyPublisher<[DeckModel], Error>
 
-    public init(collection: (String) -> CollectionWrapper = Firestore.firestore().collection) {
-        decks = collection("decks").documentsPublisher
-            .map { documents in documents?.compactMap { $0.data() } ?? [] }
-            .map { $0.compactMap(\.asDeckModel) }
-            .eraseToAnyPublisher()
+    public init(environment: DeckModelEnvironment = .live) {
+        decks = environment.publisher(forKey: "decks")
     }
 }
 
-private extension CollectionWrapper {
-    var documentsPublisher: AnyPublisher<[QueryDocumentSnapshot]?, Error> {
-        Future<[QueryDocumentSnapshot]?, Error> { [weak self] promise in
-            guard let self = self else { return }
-            self.getDocuments { querySnapshot, error in
+enum DeckServiceError: Error {
+    case general
+}
+
+extension DeckModelEnvironment {
+    func publisher(forKey key: String) -> AnyPublisher<[DeckModel], Error> {
+        Future<[DeckModel], Error> { promise in
+            self.fetch(key) { deckModels, error in
                 if let error = error {
                     promise(.failure(error))
-                } else {
-                    promise(.success(querySnapshot?.documents))
+                    return
                 }
+
+                guard let deckModels = deckModels else {
+                    promise(.failure(DeckServiceError.general))
+                    return
+                }
+
+                promise(.success(deckModels))
             }
         }.eraseToAnyPublisher()
+    }
+}
+
+private extension Array where Element == QueryDocumentSnapshot {
+    var asDeckModels: [DeckModel] {
+        compactMap { $0.data().asDeckModel }
     }
 }
 
