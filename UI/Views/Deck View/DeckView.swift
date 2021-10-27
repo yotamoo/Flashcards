@@ -10,10 +10,10 @@ import Combine
 import Common
 
 public struct DeckView: View {
-    @ObservedObject var viewModel: DeckViewViewModel
+    @ObservedObject var viewModel: DeckViewState
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
-    public init(viewModel: DeckViewViewModel) {
+    public init(viewModel: DeckViewState) {
         self.viewModel = viewModel
     }
     

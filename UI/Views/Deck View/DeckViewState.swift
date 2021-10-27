@@ -1,5 +1,5 @@
 //
-//  DeckViewModel.swift
+//  DeckViewState.swift
 //  Flashcards
 //
 //  Created by Justyna Kleczar on 15/10/2021.
@@ -8,7 +8,7 @@
 import Foundation
 import Common
 
-public class DeckViewViewModel: ObservableObject {
+public class DeckViewState: ObservableObject {
     @Published var progress: Double = 0
     @Published var flashcardModel: FlashcardModel?
     @Published var didFinish = false

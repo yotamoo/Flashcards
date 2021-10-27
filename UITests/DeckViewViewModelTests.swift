@@ -1,5 +1,5 @@
 //
-//  DeckViewViewModelTests.swift
+//  DeckViewStateTests.swift
 //  FlashcardsTests
 //
 //  Created by Yotam Ohayon on 06.10.21.
@@ -12,12 +12,12 @@ import Combine
 import Common
 @testable import UI
 
-class DeckViewViewModelTests: QuickSpec {
+class DeckViewStateTests: QuickSpec {
     override func spec() {
-        var sut: DeckViewViewModel!
+        var sut: DeckViewState!
 
         beforeEach {
-            sut = DeckViewViewModel(title: "title", flashcardModels: Mocks.flashcards)
+            sut = DeckViewState(title: "title", flashcardModels: Mocks.flashcards)
         }
 
         describe("flashcardModel") {
