@@ -15,11 +15,12 @@
 		5532014B2705BF6000D3EDE7 /* FlashcardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */; };
 		5532014F2705BF6200D3EDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5532014E2705BF6200D3EDE7 /* Assets.xcassets */; };
 		553201522705BF6200D3EDE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553201512705BF6200D3EDE7 /* Preview Assets.xcassets */; };
+		5547535627298DC5009D2E40 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547535527298DC5009D2E40 /* Store.swift */; };
 		554B4291271E05A3003E1ED8 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55517B2D271C568F005C8D12 /* Common.framework */; platformFilter = ios; };
 		554B4298271E05BE003E1ED8 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 554B4297271E05BE003E1ED8 /* Quick */; };
 		554B429A271E05BE003E1ED8 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 554B4299271E05BE003E1ED8 /* Nimble */; };
 		554B42A6271ED62B003E1ED8 /* FlashcardsReduxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */; };
-		554B42A8271ED62B003E1ED8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42A7271ED62B003E1ED8 /* ContentView.swift */; };
+		554B42A8271ED62B003E1ED8 /* ContentViewRedux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42A7271ED62B003E1ED8 /* ContentViewRedux.swift */; };
 		554B42AA271ED62D003E1ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554B42A9271ED62D003E1ED8 /* Assets.xcassets */; };
 		554B42AD271ED62D003E1ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554B42AC271ED62D003E1ED8 /* Preview Assets.xcassets */; };
 		554B42B7271ED62D003E1ED8 /* FlashcardsReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42B6271ED62D003E1ED8 /* FlashcardsReduxTests.swift */; };
@@ -146,10 +147,11 @@
 		5532014E2705BF6200D3EDE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		553201512705BF6200D3EDE7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		553201742706859500D3EDE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5547535527298DC5009D2E40 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		554B428D271E05A3003E1ED8 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42A3271ED62B003E1ED8 /* FlashcardsRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashcardsRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsReduxApp.swift; sourceTree = "<group>"; };
-		554B42A7271ED62B003E1ED8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		554B42A7271ED62B003E1ED8 /* ContentViewRedux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRedux.swift; sourceTree = "<group>"; };
 		554B42A9271ED62D003E1ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		554B42AC271ED62D003E1ED8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		554B42B2271ED62D003E1ED8 /* FlashcardsReduxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsReduxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,8 +334,9 @@
 		554B42A4271ED62B003E1ED8 /* FlashcardsRedux */ = {
 			isa = PBXGroup;
 			children = (
+				554B42A7271ED62B003E1ED8 /* ContentViewRedux.swift */,
 				554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */,
-				554B42A7271ED62B003E1ED8 /* ContentView.swift */,
+				5547535527298DC5009D2E40 /* Store.swift */,
 				554B42A9271ED62D003E1ED8 /* Assets.xcassets */,
 				554B42AB271ED62D003E1ED8 /* Preview Content */,
 			);
@@ -812,7 +815,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				554B42A8271ED62B003E1ED8 /* ContentView.swift in Sources */,
+				5547535627298DC5009D2E40 /* Store.swift in Sources */,
+				554B42A8271ED62B003E1ED8 /* ContentViewRedux.swift in Sources */,
 				554B42A6271ED62B003E1ED8 /* FlashcardsReduxApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

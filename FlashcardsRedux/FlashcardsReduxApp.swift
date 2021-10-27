@@ -11,7 +11,7 @@ import SwiftUI
 struct FlashcardsReduxApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentViewRedux()
         }
     }
 }
