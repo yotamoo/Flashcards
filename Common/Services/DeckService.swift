@@ -9,23 +9,28 @@ import Foundation
 import Firebase
 import Combine
 
+public protocol CollectionWrapper: AnyObject {
+    func getDocuments(completion: @escaping (QuerySnapshot?, Error?) -> Void)
+}
+
+extension CollectionReference: CollectionWrapper {}
+
 public struct DeckService {
-    public init() {}
+    let decks: AnyPublisher<[DeckModel], Error>
 
-    public func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
-        let db = Firestore.firestore()
-
-        return db.collection("decks").documentsPublisher
+    public init(collection: (String) -> CollectionWrapper = Firestore.firestore().collection) {
+        decks = collection("decks").documentsPublisher
             .map { documents in documents?.compactMap { $0.data() } ?? [] }
             .map { $0.compactMap(\.asDeckModel) }
             .eraseToAnyPublisher()
     }
 }
 
-private extension Firebase.CollectionReference {
+private extension CollectionWrapper {
     var documentsPublisher: AnyPublisher<[QueryDocumentSnapshot]?, Error> {
         Future<[QueryDocumentSnapshot]?, Error> { [weak self] promise in
-            self!.getDocuments { querySnapshot, error in
+            guard let self = self else { return }
+            self.getDocuments { querySnapshot, error in
                 if let error = error {
                     promise(.failure(error))
                 } else {
