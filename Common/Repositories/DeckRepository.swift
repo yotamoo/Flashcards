@@ -46,12 +46,3 @@ public struct DeckRepository: DeckRepositoryType {
         }).eraseToAnyPublisher()
     }
 }
-
-public struct DeckRepositoryMock: DeckRepositoryType {
-    public init() {}
-    
-    public let flashcardsSubject = PassthroughSubject<[DeckModel], Error>()
-    public func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error> {
-        flashcardsSubject.eraseToAnyPublisher()
-    }
-}

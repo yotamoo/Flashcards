@@ -7,13 +7,14 @@
 
 import SwiftUI
 import UI
+import Common
 
 enum AppAction {
     case someAction
 }
 
 struct AppState {
-    let name = "yotam"
+    var decks: [DeckModel] = []
 }
 
 let appReducer: Reducer<AppState, AppAction> = { state, action in
@@ -32,13 +33,19 @@ let appReducer: Reducer<AppState, AppAction> = { state, action in
 struct ContentViewRedux: View {
     @ObservedObject private var store = Store<AppState, AppAction>(
         name: "ContentViewRedux",
-        state: .init(),
+        state: .init(decks: Mocks.decks),
         reducer: appReducer
     )
 
     var body: some View {
-        Button("Click") {
-            store.send(.someAction)
+        NavigationView {
+            List {
+                ForEach(store.state.decks) { deck in
+                    NavigationLink(deck.title) {
+                        DeckView(viewModel: .init(title: deck.title, flashcardModels: deck.flashcards))
+                    }
+                }
+            }
         }
     }
 }
