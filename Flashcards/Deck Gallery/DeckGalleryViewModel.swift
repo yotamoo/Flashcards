@@ -14,26 +14,16 @@ struct DeckModelEnvironment {
 }
 
 extension DeckModelEnvironment {
-    static var environment: Self {
-        #if DEBUG
+    static var live: Self {
         .init(decks: DeckRepository().getFlashcardDecks())
-        #else
-        .init(decks: DeckRepository().getFlashcardDecks())
-        #endif
-    }
-
-    static var mock: Self {
-        .init(decks: Just(Mocks.decks)
-                .setFailureType(to: Error.self)
-                .eraseToAnyPublisher())
     }
 }
 
-public class DeckGalleryViewModel: ObservableObject {
+class DeckGalleryViewModel: ObservableObject {
     @Published var decks: [DeckModel] = []
     private var cancellable: AnyCancellable?
     
-    init(environment: DeckModelEnvironment = DeckModelEnvironment.environment) {
+    init(environment: DeckModelEnvironment = .live) {
         cancellable = environment.decks.sink(receiveCompletion: {
             print($0)
         }, receiveValue: { [weak self] in

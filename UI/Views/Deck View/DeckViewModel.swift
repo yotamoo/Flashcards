@@ -22,7 +22,7 @@ public class DeckViewViewModel: ObservableObject {
         }
     }
     
-    init(title: String, flashcardModels: [FlashcardModel]) {
+    public init(title: String, flashcardModels: [FlashcardModel]) {
         self.title = title
         self.flashcardModels = flashcardModels
         self.flashcardModel = flashcardModels.first
