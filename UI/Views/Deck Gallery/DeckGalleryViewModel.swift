@@ -16,9 +16,9 @@ struct DeckModelEnvironment {
 extension DeckModelEnvironment {
     static var environment: Self {
         #if DEBUG
-        .init(decks: FlashcardRepository().getFlashcardDecks())
+        .init(decks: DeckRepository().getFlashcardDecks())
         #else
-        .init(decks: FlashcardRepository().getFlashcardDecks())
+        .init(decks: DeckRepository().getFlashcardDecks())
         #endif
     }
 

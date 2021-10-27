@@ -14,7 +14,7 @@ import Common
 
 class DeckGalleryViewModelTests: QuickSpec {
     
-    private var flashcardRepository = FlashcardRepositoryMock()
+    private var deckRepository = DeckRepositoryMock()
     
     override func spec() {
         var sut: DeckGalleryViewModel!
@@ -30,7 +30,7 @@ class DeckGalleryViewModelTests: QuickSpec {
                 expected = [.init(id: .init(), title: "title", flashcards: [
                     .init(id: .init(), front: "1", back: "1")
                 ])]
-                self.flashcardRepository.flashcardsSubject.send(expected)
+                self.deckRepository.flashcardsSubject.send(expected)
             }
             
             it("passes the values as is from the repository") {

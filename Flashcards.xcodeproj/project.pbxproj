@@ -51,8 +51,8 @@
 		55517B3A271C56BE005C8D12 /* FlashcardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789DB270DF28100056583 /* FlashcardModel.swift */; };
 		55517B3B271C56BE005C8D12 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C297B12719A89E00235224 /* DeckModel.swift */; };
 		55517B3F271C571A005C8D12 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C297B42719B38700235224 /* DeckViewModel.swift */; };
-		55517B40271C57E1005C8D12 /* FlashcardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E1270DF2F700056583 /* FlashcardRepository.swift */; };
-		55517B41271C57E1005C8D12 /* FlashcardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789DE270DF2A100056583 /* FlashcardService.swift */; };
+		55517B40271C57E1005C8D12 /* DeckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789E1270DF2F700056583 /* DeckRepository.swift */; };
+		55517B41271C57E1005C8D12 /* DeckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C789DE270DF2A100056583 /* DeckService.swift */; };
 		55517B43271C581C005C8D12 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 55517B42271C581C005C8D12 /* FirebaseFirestore */; };
 		55517B45271C581C005C8D12 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 55517B44271C581C005C8D12 /* FirebaseFirestoreSwift-Beta */; };
 		55517B4A271C58D5005C8D12 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55517B2D271C568F005C8D12 /* Common.framework */; };
@@ -186,8 +186,8 @@
 		55517B30271C568F005C8D12 /* Common.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Common.docc; sourceTree = "<group>"; };
 		5580C860270E2EB20002E67C /* DeckViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewViewModelTests.swift; sourceTree = "<group>"; };
 		55C789DB270DF28100056583 /* FlashcardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
-		55C789DE270DF2A100056583 /* FlashcardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardService.swift; sourceTree = "<group>"; };
-		55C789E1270DF2F700056583 /* FlashcardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardRepository.swift; sourceTree = "<group>"; };
+		55C789DE270DF2A100056583 /* DeckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckService.swift; sourceTree = "<group>"; };
+		55C789E1270DF2F700056583 /* DeckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepository.swift; sourceTree = "<group>"; };
 		55C789E3270DF3A600056583 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		55D88B4B2716C88D006E05D7 /* DeckGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckGalleryView.swift; sourceTree = "<group>"; };
 		55D88B4D2716D42E006E05D7 /* DeckGalleryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckGalleryViewModelTests.swift; sourceTree = "<group>"; };
@@ -459,7 +459,7 @@
 		55C789DD270DF29300056583 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				55C789DE270DF2A100056583 /* FlashcardService.swift */,
+				55C789DE270DF2A100056583 /* DeckService.swift */,
 				552670D4271C6845001DB1A0 /* InitializeFirebase.swift */,
 			);
 			path = Services;
@@ -468,7 +468,7 @@
 		55C789E0270DF2D100056583 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				55C789E1270DF2F700056583 /* FlashcardRepository.swift */,
+				55C789E1270DF2F700056583 /* DeckRepository.swift */,
 				554B4285271DFCC8003E1ED8 /* DummyModelRepository.swift */,
 			);
 			path = Repositories;
@@ -933,11 +933,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55517B40271C57E1005C8D12 /* FlashcardRepository.swift in Sources */,
+				55517B40271C57E1005C8D12 /* DeckRepository.swift in Sources */,
 				552670D5271C6845001DB1A0 /* InitializeFirebase.swift in Sources */,
 				554B4286271DFCC8003E1ED8 /* DummyModelRepository.swift in Sources */,
 				55517B3A271C56BE005C8D12 /* FlashcardModel.swift in Sources */,
-				55517B41271C57E1005C8D12 /* FlashcardService.swift in Sources */,
+				55517B41271C57E1005C8D12 /* DeckService.swift in Sources */,
 				55517B3B271C56BE005C8D12 /* DeckModel.swift in Sources */,
 				554B4288271DFD11003E1ED8 /* DummyModel.swift in Sources */,
 				55517B31271C568F005C8D12 /* Common.docc in Sources */,

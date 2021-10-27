@@ -1,5 +1,5 @@
 //
-//  FlashcardRepository.swift
+//  DeckRepository.swift
 //  Flashcards
 //
 //  Created by Yotam Ohayon on 06.10.21.
@@ -8,18 +8,19 @@
 import Foundation
 import Combine
 
-public protocol FlashcardRepositoryType {
+public protocol DeckRepositoryType {
     func getFlashcardDecks() -> AnyPublisher<[DeckModel], Error>
 }
 
-public struct FlashcardRepository: FlashcardRepositoryType {
-    private let service: FlashcardServiceProtocol
+public struct DeckRepository: DeckRepositoryType {
+    private let service: DeckServiceProtocol
     private var userDefaults: UserDefaults
     private let key = "flashcards"
     
-    public init() {
-        self.service = FlashcardService()
-        self.userDefaults = UserDefaults.standard
+    public init(deckService: DeckServiceProtocol = DeckService(),
+                userDefaults: UserDefaults = .standard) {
+        self.service = deckService
+        self.userDefaults = userDefaults
     }
     
     private func saveToUserDefaults(_ decks: [DeckModel]) {
@@ -46,7 +47,7 @@ public struct FlashcardRepository: FlashcardRepositoryType {
     }
 }
 
-public struct FlashcardRepositoryMock: FlashcardRepositoryType {
+public struct DeckRepositoryMock: DeckRepositoryType {
     public init() {}
     
     public let flashcardsSubject = PassthroughSubject<[DeckModel], Error>()
