@@ -21,6 +21,8 @@ extension AppAction {
             switch self {
             case let .userDidLogIn(user):
                 return .userDidLogIn(user)
+            case .didLoadDecks(_):
+                return nil
             }
         }
         set {

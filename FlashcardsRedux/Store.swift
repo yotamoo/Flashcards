@@ -24,7 +24,9 @@ public final class Store<State, Action>: ObservableObject {
     public func send(_ action: Action) {
         print(action, "sent to", name, "store", #file, #function)
         let effects = reducer(&state, action)
-        effects.forEach { $0() }
+        effects.forEach { [weak self] effect in
+            self?.send(effect())
+        }
     }
 
     public func view<LocalState, LocalAction>(

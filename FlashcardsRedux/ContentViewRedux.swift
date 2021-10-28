@@ -11,6 +11,7 @@ import Common
 
 enum AppAction {
     case userDidLogIn(User)
+    case didLoadDecks([DeckModel])
 }
 
 struct AppState {
@@ -21,16 +22,21 @@ struct AppState {
 let appReducer: Reducer<AppState, AppAction> = combine(
     pullback(reducer: loginViewReducer,
              stateKeyPath: \.asLoginViewState,
-             actionKeyPath: \.asLoginViewAction)
+             actionKeyPath: \.asLoginViewAction),
+    localReducer
 )
 
-//let localReducer: Reducer<AppState, AppAction> = { state, action in
-//    switch action {
-//    case .userDidLogIn(let user):
-//        let repo = DeckRepository()
-//
-//    }
-//}
+let localReducer: Reducer<AppState, AppAction> = { state, action in
+    switch action {
+    case .userDidLogIn(let user):
+        return [{
+            return .didLoadDecks(Mocks.decks)
+        }]
+    case .didLoadDecks(let decks):
+        state.decks = decks
+        return []
+    }
+}
 
 struct ContentViewRedux: View {
     @ObservedObject private var store = Store<AppState, AppAction>(
