@@ -5,15 +5,16 @@
 //  Created by Yotam Ohayon on 27.10.21.
 //
 
-import Foundation
+import Combine
 
-public typealias Effect<Output> = () -> Output
+public typealias Effect<Output> = AnyPublisher<Output, Never>
 public typealias Reducer<Value, Action> = (inout Value, Action) -> [Effect<Action>]
 
 public final class Store<State, Action>: ObservableObject {
     @Published public var state: State
     private let reducer: Reducer<State, Action>
     private let name: String
+    private var cancellables = Set<AnyCancellable>()
 
     public init(name: String, state: State, reducer: @escaping Reducer<State, Action>) {
         self.name = name
@@ -25,7 +26,11 @@ public final class Store<State, Action>: ObservableObject {
         print(action, "sent to", name, "store", #file, #function)
         let effects = reducer(&state, action)
         effects.forEach { [weak self] effect in
-            self?.send(effect())
+            guard let self = self else { return }
+            effect.sink(
+                receiveCompletion: { _ in },
+                receiveValue: self.send
+            ).store(in: &self.cancellables)
         }
     }
 
@@ -73,9 +78,11 @@ public func pullback<GlobalState, LocalState, GlobalAction, LocalAction>(
         let localEffects = reducer(&globalState[keyPath: stateKeyPath], localAction)
 
         return localEffects.map { localEffect -> Effect<GlobalAction> in
-            var globalAction = gloablAction
-            globalAction[keyPath: actionKeyPath] = localEffect()
-            return { globalAction }
+            return localEffect.map { localAction in
+                var globalAction = gloablAction
+                globalAction[keyPath: actionKeyPath] = localAction
+                return globalAction
+            }.eraseToAnyPublisher()
         }
     }
 }

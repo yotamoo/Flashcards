@@ -20,6 +20,7 @@
 		5547535D2729CC04009D2E40 /* DeckServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547535C2729CC04009D2E40 /* DeckServiceTests.swift */; };
 		5547535F272A8D72009D2E40 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547535E272A8D72009D2E40 /* User.swift */; };
 		55475361272A8E34009D2E40 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55475360272A8E34009D2E40 /* LoginView.swift */; };
+		55475363272AC7A3009D2E40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55475362272AC7A3009D2E40 /* GoogleService-Info.plist */; };
 		554B4291271E05A3003E1ED8 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55517B2D271C568F005C8D12 /* Common.framework */; platformFilter = ios; };
 		554B4298271E05BE003E1ED8 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 554B4297271E05BE003E1ED8 /* Quick */; };
 		554B429A271E05BE003E1ED8 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 554B4299271E05BE003E1ED8 /* Nimble */; };
@@ -156,6 +157,7 @@
 		5547535C2729CC04009D2E40 /* DeckServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckServiceTests.swift; sourceTree = "<group>"; };
 		5547535E272A8D72009D2E40 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		55475360272A8E34009D2E40 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		55475362272AC7A3009D2E40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		554B428D271E05A3003E1ED8 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42A3271ED62B003E1ED8 /* FlashcardsRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashcardsRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsReduxApp.swift; sourceTree = "<group>"; };
@@ -305,12 +307,12 @@
 		553201492705BF6000D3EDE7 /* Flashcards */ = {
 			isa = PBXGroup;
 			children = (
-				55517B26271C564E005C8D12 /* Deck Gallery */,
 				D10BFFB527109C9800E8957E /* GoogleService-Info.plist */,
 				D10BFFBC27109EED00E8957E /* AppDelegate.swift */,
 				5532014C2705BF6000D3EDE7 /* ContentView.swift */,
 				5532014A2705BF6000D3EDE7 /* FlashcardsApp.swift */,
 				5532014E2705BF6200D3EDE7 /* Assets.xcassets */,
+				55517B26271C564E005C8D12 /* Deck Gallery */,
 				553201502705BF6200D3EDE7 /* Preview Content */,
 			);
 			path = Flashcards;
@@ -352,6 +354,7 @@
 		554B42A4271ED62B003E1ED8 /* FlashcardsRedux */ = {
 			isa = PBXGroup;
 			children = (
+				55475362272AC7A3009D2E40 /* GoogleService-Info.plist */,
 				554B42A7271ED62B003E1ED8 /* ContentViewRedux.swift */,
 				554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */,
 				55475360272A8E34009D2E40 /* LoginView.swift */,
@@ -770,6 +773,7 @@
 			files = (
 				554B42AD271ED62D003E1ED8 /* Preview Assets.xcassets in Resources */,
 				554B42AA271ED62D003E1ED8 /* Assets.xcassets in Resources */,
+				55475363272AC7A3009D2E40 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

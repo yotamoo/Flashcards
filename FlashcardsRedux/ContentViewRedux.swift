@@ -8,6 +8,7 @@
 import SwiftUI
 import UI
 import Common
+import Combine
 
 enum AppAction {
     case userDidLogIn(User)
@@ -29,9 +30,14 @@ let appReducer: Reducer<AppState, AppAction> = combine(
 let localReducer: Reducer<AppState, AppAction> = { state, action in
     switch action {
     case .userDidLogIn(let user):
-        return [{
-            return .didLoadDecks(Mocks.decks)
-        }]
+        Common.initializeFirebase()
+        return [
+            DeckRepository().decks
+                .map { .didLoadDecks($0) }
+                .assertNoFailure()
+                .setFailureType(to: Never.self)
+                .eraseToAnyPublisher()
+        ]
     case .didLoadDecks(let decks):
         state.decks = decks
         return []
