@@ -7,8 +7,8 @@
 
 import Foundation
 
-public typealias Effect = () -> Void
-public typealias Reducer<Value, Action> = (inout Value, Action) -> [Effect]
+public typealias Effect<Output> = () -> Output
+public typealias Reducer<Value, Action> = (inout Value, Action) -> [Effect<Action>]
 
 public final class Store<State, Action>: ObservableObject {
     @Published public var state: State
@@ -68,6 +68,12 @@ public func pullback<GlobalState, LocalState, GlobalAction, LocalAction>(
             return []
         }
         print(gloablAction, "converted to", localAction, #file, #function)
-        return reducer(&globalState[keyPath: stateKeyPath], localAction)
+        let localEffects = reducer(&globalState[keyPath: stateKeyPath], localAction)
+
+        return localEffects.map { localEffect -> Effect<GlobalAction> in
+            var globalAction = gloablAction
+            globalAction[keyPath: actionKeyPath] = localEffect()
+            return { globalAction }
+        }
     }
 }
