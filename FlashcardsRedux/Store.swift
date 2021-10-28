@@ -10,6 +10,14 @@ import Combine
 public typealias Effect<Output> = AnyPublisher<Output, Never>
 public typealias Reducer<Value, Action> = (inout Value, Action) -> [Effect<Action>]
 
+enum NeverAction {
+    var asAppAction: AppAction? { nil }
+}
+
+func neverReduer<State>() -> Reducer<State, NeverAction> {
+    return { _, _  in [] }
+}
+
 public final class Store<State, Action>: ObservableObject {
     @Published public var state: State
     private let reducer: Reducer<State, Action>

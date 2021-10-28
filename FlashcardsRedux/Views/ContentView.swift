@@ -20,6 +20,12 @@ struct AppState {
     var decks: [DeckModel]?
 }
 
+extension AppState {
+    var asDeckGalleryState: DeckGalleryState {
+        .init(decks: decks!)
+    }
+}
+
 let appReducer: Reducer<AppState, AppAction> = combine(
     pullback(reducer: loginViewReducer,
              stateKeyPath: \.asLoginViewState,
@@ -52,24 +58,20 @@ struct ContentView: View {
     )
 
     var body: some View {
-        if let user = store.state.user {
-            if let decks = store.state.decks {
-                NavigationView {
-                    List {
-                        ForEach(decks) { deck in
-                            NavigationLink(deck.title) {
-                                DeckView(viewModel: .init(title: deck.title, flashcardModels: deck.flashcards))
-                            }
-                        }
-                    }
-                }
+        if store.state.user != nil {
+            if store.state.decks != nil {
+                DeckGalleryView(store: store.view(
+                    name: "Deck Gallery",
+                    action: \.asAppAction,
+                    state: \.asDeckGalleryState)
+                )
             } else {
                 // create a deck
                 EmptyView()
             }
         } else {
             LoginView(store: store.view(
-                name: "LoginView",
+                name: "Login View",
                 action: \.asAppAction,
                 state: \.asLoginViewState))
         }
