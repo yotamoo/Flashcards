@@ -27,7 +27,7 @@ public final class Store<State, Action>: ObservableObject {
 
     public func view<LocalState, LocalAction>(
         name: String,
-        action actionMapper: @escaping (LocalAction) -> Action,
+        action actionMapper: @escaping (LocalAction) -> Action?,
         state stateMapper: @escaping (State) -> LocalState
     ) -> Store<LocalState, LocalAction> {
         let localStore = Store<LocalState, LocalAction>(
@@ -36,8 +36,10 @@ public final class Store<State, Action>: ObservableObject {
         ) { [weak self, name] localState, localAction in
             guard let self = self else { return }
             print("reducer in ", name, "created by view function")
-            let action = actionMapper(localAction)
-            self.send(action)
+            guard let globalAction = actionMapper(localAction) else {
+                return
+            }
+            self.send(globalAction)
             localState = stateMapper(self.state)
 //            self?.reducer(&state, action)
         }
@@ -58,10 +60,12 @@ public func combine<State, Action>(_ reducers: Reducer<State, Action>...) -> Red
 public func pullback<GlobalState, LocalState, GlobalAction, LocalAction>(
     reducer: @escaping Reducer<LocalState, LocalAction>,
     stateKeyPath:  WritableKeyPath<GlobalState, LocalState>,
-    actionKeyPath: WritableKeyPath<GlobalAction, LocalAction>
+    actionKeyPath: WritableKeyPath<GlobalAction, LocalAction?>
 ) -> Reducer<GlobalState, GlobalAction> {
     return { globalState, gloablAction in
-        let localAction = gloablAction[keyPath: actionKeyPath]
+        guard let localAction = gloablAction[keyPath: actionKeyPath] else {
+            return
+        }
         print(gloablAction, "converted to", localAction, #file, #function)
         reducer(&globalState[keyPath: stateKeyPath], localAction)
     }

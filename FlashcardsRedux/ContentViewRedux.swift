@@ -10,25 +10,19 @@ import UI
 import Common
 
 enum AppAction {
-    case someAction
+    case userDidLogIn(User)
 }
 
 struct AppState {
-    var decks: [DeckModel] = []
+    var user: User?
+    var decks: [DeckModel]?
 }
 
-let appReducer: Reducer<AppState, AppAction> = { state, action in
-    switch action {
-    case .someAction:
-        print("tapped")
-    }
-}
-
-//let appReducer: Reducer<AppState, AppAction> = Architecture.combine(
-//    pullback(reducer: exampleViewReducer,
-//             stateKeyPath: \.asExampleViewState,
-//             actionKeyPath: \.asExampleViewAction)
-//)
+let appReducer: Reducer<AppState, AppAction> = combine(
+    pullback(reducer: loginViewReducer,
+             stateKeyPath: \.asLoginViewState,
+             actionKeyPath: \.asLoginViewAction)
+)
 
 struct ContentViewRedux: View {
     @ObservedObject private var store = Store<AppState, AppAction>(
@@ -38,14 +32,26 @@ struct ContentViewRedux: View {
     )
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(store.state.decks) { deck in
-                    NavigationLink(deck.title) {
-                        DeckView(viewModel: .init(title: deck.title, flashcardModels: deck.flashcards))
+        if let user = store.state.user {
+            if let decks = store.state.decks {
+                NavigationView {
+                    List {
+                        ForEach(decks) { deck in
+                            NavigationLink(deck.title) {
+                                DeckView(viewModel: .init(title: deck.title, flashcardModels: deck.flashcards))
+                            }
+                        }
                     }
                 }
+            } else {
+                // create a deck
+                EmptyView()
             }
+        } else {
+            LoginView(store: store.view(
+                name: "LoginView",
+                action: { $0.asAppAction },
+                state: { _ in .init() }))
         }
     }
 }
