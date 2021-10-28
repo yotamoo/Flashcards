@@ -1,5 +1,5 @@
 //
-//  ContentViewRedux.swift
+//  ContentView.swift
 //  FlashcardsRedux
 //
 //  Created by Yotam Ohayon on 19.10.21.
@@ -44,9 +44,9 @@ let localReducer: Reducer<AppState, AppAction> = { state, action in
     }
 }
 
-struct ContentViewRedux: View {
+struct ContentView: View {
     @ObservedObject private var store = Store<AppState, AppAction>(
-        name: "ContentViewRedux",
+        name: "ContentView",
         state: .init(),
         reducer: appReducer
     )
@@ -78,6 +78,6 @@ struct ContentViewRedux: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViewRedux()
+        ContentView()
     }
 }

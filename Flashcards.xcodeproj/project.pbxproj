@@ -25,7 +25,7 @@
 		554B4298271E05BE003E1ED8 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 554B4297271E05BE003E1ED8 /* Quick */; };
 		554B429A271E05BE003E1ED8 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 554B4299271E05BE003E1ED8 /* Nimble */; };
 		554B42A6271ED62B003E1ED8 /* FlashcardsReduxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */; };
-		554B42A8271ED62B003E1ED8 /* ContentViewRedux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42A7271ED62B003E1ED8 /* ContentViewRedux.swift */; };
+		554B42A8271ED62B003E1ED8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42A7271ED62B003E1ED8 /* ContentView.swift */; };
 		554B42AA271ED62D003E1ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554B42A9271ED62D003E1ED8 /* Assets.xcassets */; };
 		554B42AD271ED62D003E1ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554B42AC271ED62D003E1ED8 /* Preview Assets.xcassets */; };
 		554B42B7271ED62D003E1ED8 /* FlashcardsReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B42B6271ED62D003E1ED8 /* FlashcardsReduxTests.swift */; };
@@ -161,7 +161,7 @@
 		554B428D271E05A3003E1ED8 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42A3271ED62B003E1ED8 /* FlashcardsRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashcardsRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsReduxApp.swift; sourceTree = "<group>"; };
-		554B42A7271ED62B003E1ED8 /* ContentViewRedux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRedux.swift; sourceTree = "<group>"; };
+		554B42A7271ED62B003E1ED8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		554B42A9271ED62D003E1ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		554B42AC271ED62D003E1ED8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		554B42B2271ED62D003E1ED8 /* FlashcardsReduxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsReduxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -351,13 +351,21 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		55475364272AD092009D2E40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				554B42A7271ED62B003E1ED8 /* ContentView.swift */,
+				55475360272A8E34009D2E40 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		554B42A4271ED62B003E1ED8 /* FlashcardsRedux */ = {
 			isa = PBXGroup;
 			children = (
+				55475364272AD092009D2E40 /* Views */,
 				55475362272AC7A3009D2E40 /* GoogleService-Info.plist */,
-				554B42A7271ED62B003E1ED8 /* ContentViewRedux.swift */,
 				554B42A5271ED62B003E1ED8 /* FlashcardsReduxApp.swift */,
-				55475360272A8E34009D2E40 /* LoginView.swift */,
 				5547535527298DC5009D2E40 /* Store.swift */,
 				554B42A9271ED62D003E1ED8 /* Assets.xcassets */,
 				554B42AB271ED62D003E1ED8 /* Preview Content */,
@@ -842,7 +850,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5547535627298DC5009D2E40 /* Store.swift in Sources */,
-				554B42A8271ED62B003E1ED8 /* ContentViewRedux.swift in Sources */,
+				554B42A8271ED62B003E1ED8 /* ContentView.swift in Sources */,
 				55475361272A8E34009D2E40 /* LoginView.swift in Sources */,
 				554B42A6271ED62B003E1ED8 /* FlashcardsReduxApp.swift in Sources */,
 			);
