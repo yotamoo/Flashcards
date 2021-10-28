@@ -27,10 +27,21 @@ public final class Store<State, Action>: ObservableObject {
         let effects = reducer(&state, action)
         effects.forEach { [weak self] effect in
             guard let self = self else { return }
-            effect.sink(
-                receiveCompletion: { _ in },
+            var didComplete = false
+            var effectCancelabble: AnyCancellable?
+            effectCancelabble = effect.sink(
+                receiveCompletion: { _ in
+                    didComplete = true
+                    if let effectCancelabble = effectCancelabble {
+                        self.cancellables.remove(effectCancelabble)
+                    }
+                },
                 receiveValue: self.send
-            ).store(in: &self.cancellables)
+            )
+
+            if !didComplete, let effectCancelabble = effectCancelabble {
+                self.cancellables.insert(effectCancelabble)
+            }
         }
     }
 
@@ -57,8 +68,6 @@ public final class Store<State, Action>: ObservableObject {
 
 public func combine<State, Action>(_ reducers: Reducer<State, Action>...) -> Reducer<State, Action> {
   return { value, action in
-//    let effects = reducers.flatMap { $0(&value, action) }
-//    return effects
       print("executing", action, "in the combined reducer", #file, #function)
       let effects = reducers.map { $0(&value, action) }.reduce([], +)
       return effects
