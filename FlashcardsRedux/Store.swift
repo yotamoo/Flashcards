@@ -7,14 +7,15 @@
 
 import Foundation
 
-public typealias Reducer<Value, Action> = (inout Value, Action) -> Void /*[Effect<Action>]*/
+public typealias Effect = () -> Void
+public typealias Reducer<Value, Action> = (inout Value, Action) -> [Effect]
 
 public final class Store<State, Action>: ObservableObject {
     @Published public var state: State
-    private let reducer: (inout State, Action) -> Void /*[Effect]*/
+    private let reducer: Reducer<State, Action>
     private let name: String
 
-    public init(name: String, state: State, reducer: @escaping (inout State, Action) -> Void) {
+    public init(name: String, state: State, reducer: @escaping Reducer<State, Action>) {
         self.name = name
         self.state = state
         self.reducer = reducer
@@ -22,26 +23,25 @@ public final class Store<State, Action>: ObservableObject {
 
     public func send(_ action: Action) {
         print(action, "sent to", name, "store", #file, #function)
-        reducer(&state, action)
+        let effects = reducer(&state, action)
+        effects.forEach { $0() }
     }
 
     public func view<LocalState, LocalAction>(
         name: String,
-        action actionMapper: @escaping (LocalAction) -> Action?,
-        state stateMapper: @escaping (State) -> LocalState
+        action actionMapper: KeyPath<LocalAction, Action?>,
+        state stateMapper: KeyPath<State, LocalState>
     ) -> Store<LocalState, LocalAction> {
         let localStore = Store<LocalState, LocalAction>(
             name: name,
-            state: stateMapper(state)
+            state: state[keyPath: stateMapper]
         ) { [weak self, name] localState, localAction in
-            guard let self = self else { return }
+            guard let self = self,
+                  let globalAction = localAction[keyPath: actionMapper] else { return [] }
             print("reducer in ", name, "created by view function")
-            guard let globalAction = actionMapper(localAction) else {
-                return
-            }
             self.send(globalAction)
-            localState = stateMapper(self.state)
-//            self?.reducer(&state, action)
+            localState = self.state[keyPath: stateMapper]
+            return []
         }
 
         return localStore
@@ -53,7 +53,8 @@ public func combine<State, Action>(_ reducers: Reducer<State, Action>...) -> Red
 //    let effects = reducers.flatMap { $0(&value, action) }
 //    return effects
       print("executing", action, "in the combined reducer", #file, #function)
-      reducers.forEach { $0(&value, action) }
+      let effects = reducers.map { $0(&value, action) }.reduce([], +)
+      return effects
   }
 }
 
@@ -64,9 +65,9 @@ public func pullback<GlobalState, LocalState, GlobalAction, LocalAction>(
 ) -> Reducer<GlobalState, GlobalAction> {
     return { globalState, gloablAction in
         guard let localAction = gloablAction[keyPath: actionKeyPath] else {
-            return
+            return []
         }
         print(gloablAction, "converted to", localAction, #file, #function)
-        reducer(&globalState[keyPath: stateKeyPath], localAction)
+        return reducer(&globalState[keyPath: stateKeyPath], localAction)
     }
 }

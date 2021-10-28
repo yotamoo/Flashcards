@@ -24,10 +24,18 @@ let appReducer: Reducer<AppState, AppAction> = combine(
              actionKeyPath: \.asLoginViewAction)
 )
 
+//let localReducer: Reducer<AppState, AppAction> = { state, action in
+//    switch action {
+//    case .userDidLogIn(let user):
+//        let repo = DeckRepository()
+//
+//    }
+//}
+
 struct ContentViewRedux: View {
     @ObservedObject private var store = Store<AppState, AppAction>(
         name: "ContentViewRedux",
-        state: .init(decks: Mocks.decks),
+        state: .init(),
         reducer: appReducer
     )
 
@@ -50,8 +58,8 @@ struct ContentViewRedux: View {
         } else {
             LoginView(store: store.view(
                 name: "LoginView",
-                action: { $0.asAppAction },
-                state: { _ in .init() }))
+                action: \.asAppAction,
+                state: \.asLoginViewState))
         }
     }
 }

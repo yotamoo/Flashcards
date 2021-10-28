@@ -53,6 +53,7 @@ let loginViewReducer: Reducer<LoginViewState, LoginViewAction> = { state, action
     switch action {
     case let .userDidLogIn(user):
         state.user = user
+        return []
     }
 }
 
